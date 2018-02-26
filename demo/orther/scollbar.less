@@ -1,0 +1,208 @@
+html{ background: linear-gradient(left, #99a, #eee, #99a); }
+
+.tcplayer{
+    width: 980px;
+    height: 556px;
+    display: flex;
+}
+.dplayer {
+	width: 680px;
+	overflow: hidden;
+	position: relative;
+	display: inline-block;
+	height: 100%;
+	pointer-events: auto;
+}
+
+.danmu_pool {
+	position: relative;
+    border-left: 1px solid #e2e2e2;
+    display: inline-block;
+    width: 300px;
+    background-color: #fff;
+    box-sizing: border-box;
+    height: 100%;
+    vertical-align: top;
+    margin: 0;
+    text-align: center;
+    padding: 0;
+    position: relative;
+	overflow: hidden;
+  *{text-overflow:ellipsis;overflow: hidden;white-space: nowrap;font-size: 12px;}
+	.filter{
+		display: flex;justify-content: space-around;border-bottom: 1px solid #e8e8e8;
+		div{
+			width: 33%;
+			height: 100%;
+			padding: 0.5rem 0;
+		    cursor: pointer;
+		}
+		div:hover{
+			color: #00a1d6;
+		}
+		div.active{
+			color: #00a1d6;
+			border-bottom: 1px solid #00a1d6;
+		}
+	}
+	ul{
+		padding:0 1rem;margin:0;
+		li{width: 100%;display: flex;justify-content: space-between;padding: 0.25rem 0;}
+		li:hover div{
+			color: #00a1d6;
+		}
+		div{
+			font-size: 12px;
+		    width: 58px;
+		    text-align: left;
+			color: #99a2aa;
+		    cursor: pointer;
+    		position: relative;
+		}
+		div:nth-of-type(2){width: 146px;padding: 0 5px;}
+		div:nth-of-type(3){width: 78px;}
+	}
+	.danmaki-list{
+		
+	}
+	.danmaki-shield{
+		text-align: left;
+		.danmaki-shield-textbox{
+			padding: 10px;
+			select{
+				width: 92px;
+    			line-height: 30px;
+    			margin-right: 10px;
+    			vertical-align: top;
+    			padding: 6px 1px;
+				border: 1px solid #ccd0d7;
+    			border-radius: 4px;
+			}
+			input{
+				width: 140px;
+    			line-height: 20px;
+    			padding: 5px 10px;
+    			border-radius: 4px;
+				border: 1px solid #ccd0d7;
+    			margin-right: 10px;
+			}
+			input[type=text] {
+			    color: #222;
+			}
+		}
+		.danmaki-shield-butbox{
+			text-align: right;
+			padding: 0 22px 0 15px;
+			display: flex;
+			justify-content:space-between;
+			overflow: initial;
+			input[type=button]{
+				color: #fff;
+    			cursor: pointer;
+    			text-align: center;
+    border-radius: 4px;
+    background-color: #00a1d6;
+    vertical-align: middle;
+    border: 1px solid #00a1d6;
+    -webkit-transition: .2s;
+    transition: .2s;
+    -webkit-transition-property: background-color,border,color;
+    transition-property: background-color,border,color;
+    padding: 0 10px;
+    line-height: 26px;
+    height: 26px;
+    outline: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    display: block;
+    overflow: visible;
+		}
+			p{margin: 0;padding: 5px 0;position: relative;z-index:99;top: 10px;color: #333;}
+			
+		}
+		.danmaki-shield-table{
+			padding: 5px 15px 10px 5px;
+			table,tbody,thead{
+				display: block;
+				width: 100%;
+				tr{
+					display: flex;
+					justify-content:space-around;
+					width: 100%;
+					*{font-size: 12px;}
+					th,td{
+						font-size: 12px;
+    					line-height: 24px;
+    					text-align: left;
+					}
+					th{color: #99a2aa;}
+					th.contents,td.contents{
+						width: 10rem;
+						overflow: hidden;
+						text-overflow:ellipsis;
+						white-space: nowrap;
+					}
+					td.del,td.enabled{
+					    cursor: pointer;
+					    color: #00a1d6;
+					}
+				}
+				tr:hover{
+					background-color: #e5e9ef;
+				}
+			}
+		}
+	}
+}
+.scroll {
+  	height: -webkit-fill-available;
+  	overflow-y: scroll;
+  &--simple::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  &--simple::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: rgba(0,0,0,0.1);
+  }
+  &--simple::-webkit-scrollbar-thumb{
+    border-radius: 10px;
+    background: rgba(0,0,0,0.2);
+  }
+  &--simple::-webkit-scrollbar-thumb:hover{
+  	background: rgba(0,0,0,0.4);
+  }
+  &--simple::-webkit-scrollbar-thumb:active{
+  	background: rgba(0,0,0,.9);
+  }
+}
+.flipIn{animation:flipInY 1s 0s 1 both}
+@keyframes flipInY {
+  from {
+    transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+    animation-timing-function: ease-in;
+    opacity: 0;
+  }
+
+  40% {
+    transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+    animation-timing-function: ease-in;
+  }
+
+  60% {
+    transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
+    opacity: 1;
+  }
+
+  80% {
+    transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
+  }
+
+  to {
+    transform: perspective(400px);
+  }
+}
+  
