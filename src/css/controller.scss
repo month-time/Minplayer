@@ -21,7 +21,7 @@
             display: none;
         }
         .dplayer-icons.dplayer-comment-box {
-            display: block;
+            display: inline-block;
         }
     }
     .dplayer-bar-wrap {
@@ -116,14 +116,16 @@
         bottom: 0;
         &.dplayer-comment-box {
             display: none;
+            display: inline-block;
             position: absolute;
             transition: all .3s ease-in-out;
             z-index: 2;
             height: 38px;
             bottom: 0;
-            left: 20px;
-            right: 20px;
+            left: 200px;
+            right: 110px;
             color: #fff;
+            width: auto;
             .dplayer-icon {
                 padding: 7px;
             }
@@ -221,10 +223,10 @@
             .dplayer-comment-input {
                 outline: none;
                 border: none;
-                padding: 8px 31px;
+                padding: 8px 38px;
                 font-size: 14px;
                 line-height: 18px;
-                text-align: center;
+                text-align: left;
                 border-radius: 4px;
                 background: none;
                 margin: 0;
@@ -235,6 +237,7 @@
                 &::placeholder {
                     color: #fff;
                     opacity: 0.8;
+					text-align: center;
                 }
             }
         }

@@ -179,7 +179,7 @@ class Template {
                     </div>
                 </div>
                 <input class="dplayer-comment-input" type="text" placeholder="${tran('Input danmaku, hit Enter')}" maxlength="30">
-                <button class="dplayer-icon dplayer-send-icon" data-balloon="${tran('Send')}" data-balloon-pos="up">
+                <button class="dplayer-icon dplayer-send-icon" data-balloon="${tran('Send danmaku')}" data-balloon-pos="up">
                     <span class="dplayer-icon-content">${icons.get('send')}</span>
                 </button>
             </div>
@@ -216,7 +216,7 @@ class Template {
                     <span class="dplayer-icon-content">${icons.get('camera')}</span>
                 </a>
                 ` : ``}
-                <div class="dplayer-comment">
+                <div class="dplayer-comment" style="display:none;">
                     <button class="dplayer-icon dplayer-comment-icon" data-balloon="${tran('Send danmaku')}" data-balloon-pos="up">
                         <span class="dplayer-icon-content">${icons.get('comment')}</span>
                     </button>

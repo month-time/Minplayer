@@ -29,11 +29,13 @@ class Comment {
             const event = e || window.event;
             if (event.keyCode === 13) {
                 this.send();
+                this.player.template.commentInput.value = "";
             }
         });
 
         this.player.template.commentSendButton.addEventListener('click', () => {
             this.send();
+            this.player.template.commentInput.value = "";
         });
     }
 
