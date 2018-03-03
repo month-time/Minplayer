@@ -13,7 +13,7 @@ class User {
             opacity: 0.7,
             volume: player.options.volume || 0.7,
             unlimited: (player.options.danmaku && player.options.danmaku.unlimited ? 1 : 0) || 0,
-            danmaku: 1,
+            danmaku: (player.options.danmaku && player.options.danmaku.unlimited ? 1 : 0) || 1,
             subtitle: 1
         };
         this.data = {};

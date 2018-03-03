@@ -16,6 +16,12 @@ class Danmaku_Template {
 				
 		************************************************************************************************/
         this.danmaki_add_shield = this.container.querySelector('.danmaki_add_shield');
+        this.loop = this.container.querySelector('.danmaki-option .dplayer-setting-loop');
+        this.loopToggle = this.container.querySelector('.danmaki-option .dplayer-setting-loop .dplayer-toggle-setting-input');
+        this.showDanmaku = this.container.querySelector('.danmaki-option .dplayer-setting-showdan');
+        this.showDanmakuToggle = this.container.querySelector('.danmaki-option .dplayer-showdan-setting-input');
+        this.unlimitDanmaku = this.container.querySelector('.danmaki-option .dplayer-setting-danunlimit');
+        this.unlimitDanmakuToggle = this.container.querySelector('.danmaki-option .dplayer-danunlimit-setting-input');
 	}
 
 	tpl(options, index, tran, icons) {
@@ -71,6 +77,56 @@ class Danmaku_Template {
 				</table>
 				</div>
   			</div>
+  			<div class="danmaki-option flipIn" style="display: none;">
+
+
+<div class="dplayer-setting-box dplayer-setting-box-open">
+                        <div class="dplayer-setting-origin-panel">
+                            <div class="dplayer-setting-item dplayer-setting-speed">
+                                <span class="dplayer-label">速度</span>
+  								<select id="shield-type">
+                                <option >0.5</option>
+                                <option >0.75</option>
+                                <option selected>正常</option>
+                                <option >1.25</option>
+                                <option >1.5</option>
+                                <option >2</option>
+  								</select>
+                            </div>
+                            <div class="dplayer-setting-item dplayer-setting-danmaku">
+                                <span class="dplayer-label">弹幕透明度</span>
+                                <div class="dplayer-danmaku-bar-wrap">
+                                    <div class="dplayer-danmaku-bar">
+                                        <div class="dplayer-danmaku-bar-inner" style="width: 52.3077%;">
+                                            <span class="dplayer-thumb"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dplayer-setting-item-line dplayer-setting-loop">
+                                <span class="dplayer-label">洗脑循环</span>
+                                <div class="dplayer-toggle">
+                                    <input class="dplayer-toggle-setting-input" type="checkbox" name="dplayer-toggle">
+                                    <label for="dplayer-toggle"></label>
+                                </div>
+                            </div>
+                            <div class="dplayer-setting-item-line dplayer-setting-showdan">
+                                <span class="dplayer-label">显示弹幕</span>
+                                <div class="dplayer-toggle">
+                                    <input class="dplayer-showdan-setting-input" type="checkbox" name="dplayer-toggle-dan">
+                                    <label for="dplayer-toggle-dan"></label>
+                                </div>
+                            </div>
+                            <div class="dplayer-setting-item-line dplayer-setting-danunlimit">
+                                <span class="dplayer-label">海量弹幕</span>
+                                <div class="dplayer-toggle">
+                                    <input class="dplayer-danunlimit-setting-input" type="checkbox" name="dplayer-toggle-danunlimit">
+                                    <label for="dplayer-toggle-danunlimit"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+  			</div>
    	<div style="position: absolute;bottom: 0;background: #fff;padding: 0.5rem 0;width: 100%;border-top: 1px solid  #e8e8e8;color: #d8d8d8;">查看历史弹幕</div>
 	<div style="display:none;">${icons.get('comment')}</div>
 `;
@@ -80,19 +136,23 @@ class Danmaku_Template {
 		switch (qte) {
 			case "0":
 				document.querySelector(".danmaki-shield").style.display = "none";
+				document.querySelector(".danmaki-option").style.display = "none";
 				document.querySelector(".danmaki-list").style.display = "block";
 				break;
 			case "1":
 				document.querySelector(".danmaki-list").style.display = "none";
+				document.querySelector(".danmaki-option").style.display = "none";
 				document.querySelector(".danmaki-shield").style.display = "block";
 				break;
 			case "2":
 				document.querySelector(".danmaki-list").style.display = "none";
 				document.querySelector(".danmaki-shield").style.display = "none";
+				document.querySelector(".danmaki-option").style.display = "block";
 				break;
 			default:
 				document.querySelector(".danmaki-list").style.display = "block";
 				document.querySelector(".danmaki-shield").style.display = "none";
+				document.querySelector(".danmaki-option").style.display = "none";
 				break;
 		}
 		for (let i=0;i<document.querySelector("#tab-filter").getElementsByTagName("div").length;i++) {
