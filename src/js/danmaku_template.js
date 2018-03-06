@@ -127,7 +127,7 @@ class Danmaku_Template {
                         </div>
                     </div>
   			</div>
-   	<div style="position: absolute;bottom: 0;background: #fff;padding: 0.5rem 0;width: 100%;border-top: 1px solid  #e8e8e8;color: #d8d8d8;">查看历史弹幕</div>
+   	<div style="position: absolute;bottom: 0;background: #fff;font-size:12px;padding: 10px 0;width: 100%;border-top: 1px solid  #e8e8e8;color: #d8d8d8;">查看历史弹幕</div>
 	<div style="display:none;">${icons.get('comment')}</div>
 `;
 	}

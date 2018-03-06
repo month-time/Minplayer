@@ -9,11 +9,10 @@
 
 .dplayer-controller {
     position: absolute;
-    bottom: 41px;
+    bottom: 0;
     left: 0;
     right: 0;
-    height: 41px;
-    padding: 0 10px;
+    height: auto;
     user-select: none;
     transition: all 0.3s ease;
     &.dplayer-controller-comment {
@@ -110,138 +109,15 @@
             }
         }
     }
-    .dplayer-icons {
+	.dplayer-controller_box{
+		padding: 0 10px;
+		height: 41px;
+		position: relative;
+	}
+  .dplayer-icons {
         height: 38px;
         position: absolute;
         bottom: 0;
-        &.dplayer-comment-box {
-            display: none;
-            display: block;
-            position: absolute;
-            transition: all .3s ease-in-out;
-            z-index: 2;
-            height: 38px;
-            bottom: -38px;
-            left: 0px;
-            right: 0px;
-		    padding: 0 10px;
-            color: #fff;
-            width: auto;
-            .dplayer-icon {
-                padding: 7px;
-            }
-            .dplayer-comment-setting-icon {
-                position: absolute;
-                left: 10px;
-                top: 0;
-            }
-            .dplayer-send-icon {
-                position: absolute;
-                right: 10px;
-                top: 0;
-            }
-            .dplayer-comment-setting-box {
-                position: absolute;
-                background: rgba(28, 28, 28, 0.9);
-                bottom: 41px;
-                left: 0;
-                box-shadow: 0 0 25px rgba(0, 0, 0, .3);
-                border-radius: 4px;
-                padding: 10px 10px 16px;
-                font-size: 14px;
-                width: 204px;
-                transition: all .3s ease-in-out;
-                transform: scale(0);
-                &.dplayer-comment-setting-open {
-                    transform: scale(1);
-                }
-                input[type=radio] {
-                    display: none;
-                }
-                label {
-                    cursor: pointer;
-                }
-                .dplayer-comment-setting-title {
-                    font-size: 13px;
-                    color: #fff;
-                    line-height: 30px;
-                }
-                .dplayer-comment-setting-type {
-                    font-size: 0;
-                    .dplayer-comment-setting-title {
-                        margin-bottom: 6px;
-                    }
-                    label {
-                        &:nth-child(2) {
-                            span {
-                                border-radius: 4px 0 0 4px;
-                            }
-                        }
-                        &:nth-child(4) {
-                            span {
-                                border-radius: 0 4px 4px 0;
-                            }
-                        }
-                    }
-                    span {
-                        width: 33%;
-                        padding: 4px 6px;
-                        line-height: 16px;
-                        display: inline-block;
-                        font-size: 12px;
-                        color: #fff;
-                        border: 1px solid #fff;
-                        margin-right: -1px;
-                        box-sizing: border-box;
-                        text-align: center;
-                        cursor: pointer;
-                    }
-                    input:checked+span {
-                        background: #E4E4E6;
-                        color: #1c1c1c;
-                    }
-                }
-                .dplayer-comment-setting-color {
-                    font-size: 0;
-                    label {
-                        font-size: 0;
-                        padding: 6px;
-                        display: inline-block;
-                    }
-                    span {
-                        width: 22px;
-                        height: 22px;
-                        display: inline-block;
-                        border-radius: 50%;
-                        box-sizing: border-box;
-                        cursor: pointer;
-                        &:hover {
-                            animation: my-face 5s infinite ease-in-out;
-                        }
-                    }
-                }
-            }
-            .dplayer-comment-input {
-                outline: none;
-                border: none;
-                padding: 8px 38px;
-                font-size: 14px;
-                line-height: 18px;
-                text-align: left;
-                border-radius: 4px;
-                background: none;
-                margin: 0;
-                height: 100%;
-                box-sizing: border-box;
-                width: 100%;
-                color: #fff;
-                &::placeholder {
-                    color: #fff;
-                    opacity: 0.8;
-					text-align: center;
-                }
-            }
-        }
         &.dplayer-icons-left {
             .dplayer-icon {
                 padding: 7px;
@@ -270,41 +146,6 @@
             margin-right: 5px;
             content: '';
             border-radius: 6px;
-        }
-        .dplayer-icon {
-            width: 40px;
-            height: 100%;
-            border: none;
-            background-color: transparent;
-            outline: none;
-            cursor: pointer;
-            vertical-align: middle;
-            box-sizing: border-box;
-            display: inline-block;
-            .dplayer-icon-content {
-                transition: all .2s ease-in-out;
-                opacity: .8;
-            }
-            &:hover {
-                .dplayer-icon-content {
-                    opacity: 1;
-                }
-            }
-            &.dplayer-quality-icon {
-                color: #fff;
-                width: auto;
-                line-height: 22px;
-                font-size: 14px;
-            }
-            &.dplayer-comment-icon {
-                padding: 10px 9px 9px;
-            }
-            &.dplayer-setting-icon {
-                padding-top: 8.5px;
-            }
-            &.dplayer-volume-icon {
-                width: 43px;
-            }
         }
         .dplayer-volume {
             position: relative;
@@ -619,4 +460,166 @@
             }
         }
     }
+	        .dplayer-icon {
+            width: 40px;
+            height: 100%;
+            border: none;
+            background-color: transparent;
+            outline: none;
+            cursor: pointer;
+            vertical-align: middle;
+            box-sizing: border-box;
+            display: inline-block;
+            .dplayer-icon-content {
+                transition: all .2s ease-in-out;
+                opacity: .8;
+            }
+            &:hover {
+                .dplayer-icon-content {
+                    opacity: 1;
+                }
+            }
+            &.dplayer-quality-icon {
+                color: #fff;
+                width: auto;
+                line-height: 22px;
+                font-size: 14px;
+            }
+            &.dplayer-comment-icon {
+                padding: 10px 9px 9px;
+            }
+            &.dplayer-setting-icon {
+                padding-top: 8.5px;
+            }
+            &.dplayer-volume-icon {
+                width: 43px;
+            }
+        }
+	.dplayer-comment-box {
+            display: none;
+            display: block;
+            position: relative;
+            transition: all .3s ease-in-out;
+            z-index: 2;
+            height: 38px;
+            left: 0px;
+            right: 0px;
+		    padding: 0 10px;
+            color: #fff;
+            width: auto;
+            .dplayer-icon {
+                padding: 7px;
+            }
+            .dplayer-comment-setting-icon {
+                position: absolute;
+                left: 10px;
+                top: 0;
+            }
+            .dplayer-send-icon {
+                position: absolute;
+                right: 10px;
+                top: 0;
+            }
+            .dplayer-comment-setting-box {
+                position: absolute;
+                background: rgba(28, 28, 28, 0.9);
+                bottom: 41px;
+                left: 0;
+                box-shadow: 0 0 25px rgba(0, 0, 0, .3);
+                border-radius: 4px;
+                padding: 10px 10px 16px;
+                font-size: 14px;
+                width: 204px;
+                transition: all .3s ease-in-out;
+                transform: scale(0);
+                &.dplayer-comment-setting-open {
+                    transform: scale(1);
+                }
+                input[type=radio] {
+                    display: none;
+                }
+                label {
+                    cursor: pointer;
+                }
+                .dplayer-comment-setting-title {
+                    font-size: 13px;
+                    color: #fff;
+                    line-height: 30px;
+                }
+                .dplayer-comment-setting-type {
+                    font-size: 0;
+                    .dplayer-comment-setting-title {
+                        margin-bottom: 6px;
+                    }
+                    label {
+                        &:nth-child(2) {
+                            span {
+                                border-radius: 4px 0 0 4px;
+                            }
+                        }
+                        &:nth-child(4) {
+                            span {
+                                border-radius: 0 4px 4px 0;
+                            }
+                        }
+                    }
+                    span {
+                        width: 33%;
+                        padding: 4px 6px;
+                        line-height: 16px;
+                        display: inline-block;
+                        font-size: 12px;
+                        color: #fff;
+                        border: 1px solid #fff;
+                        margin-right: -1px;
+                        box-sizing: border-box;
+                        text-align: center;
+                        cursor: pointer;
+                    }
+                    input:checked+span {
+                        background: #E4E4E6;
+                        color: #1c1c1c;
+                    }
+                }
+                .dplayer-comment-setting-color {
+                    font-size: 0;
+                    label {
+                        font-size: 0;
+                        padding: 6px;
+                        display: inline-block;
+                    }
+                    span {
+                        width: 22px;
+                        height: 22px;
+                        display: inline-block;
+                        border-radius: 50%;
+                        box-sizing: border-box;
+                        cursor: pointer;
+                        &:hover {
+                            animation: my-face 5s infinite ease-in-out;
+                        }
+                    }
+                }
+            }
+            .dplayer-comment-input {
+                outline: none;
+                border: none;
+                padding: 8px 38px;
+                font-size: 14px;
+                line-height: 18px;
+                text-align: left;
+                border-radius: 4px;
+                background: none;
+                margin: 0;
+                height: 100%;
+                box-sizing: border-box;
+                width: 100%;
+                color: #fff;
+                &::placeholder {
+                    color: #fff;
+                    opacity: 0.8;
+					text-align: center;
+                }
+            }
+        }
 }

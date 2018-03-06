@@ -81,6 +81,7 @@ class Template {
         this.infoDanmakuId = this.container.querySelector('.dplayer-info-panel-item-danmaku-id .dplayer-info-panel-item-data');
         this.infoDanmakuApi = this.container.querySelector('.dplayer-info-panel-item-danmaku-api .dplayer-info-panel-item-data');
         this.infoDanmakuAmount = this.container.querySelector('.dplayer-info-panel-item-danmaku-amount .dplayer-info-panel-item-data');
+		this.danmakuSendBox = this.container.querySelector('.dplayer-controller .dplayer-comment-box');
     }
 
     tpl (options, index, tran, icons) {
@@ -130,7 +131,7 @@ class Template {
         </div>
         <div class="dplayer-controller-mask"></div>
         <div class="dplayer-controller">
-
+<div class="dplayer-controller_box">
             <div class="dplayer-icons dplayer-icons-left">
                 <button class="dplayer-icon dplayer-play-icon">
                     <span class="dplayer-icon-content">${icons.get('play')}</span>
@@ -264,7 +265,8 @@ class Template {
                     </div>
                 </div>
             </div>
-            <div class="dplayer-icons dplayer-comment-box">
+</div>
+            <div class="dplayer-comment-box">
                 <button class="dplayer-icon dplayer-comment-setting-icon" data-balloon="${tran('Setting')}" data-balloon-pos="up">
                     <span class="dplayer-icon-content">${icons.get('pallette')}</span>
                 </button>
