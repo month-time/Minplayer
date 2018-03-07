@@ -22,6 +22,8 @@ class Danmaku_Template {
         this.showDanmakuToggle = this.container.querySelector('.danmaki-option .dplayer-showdan-setting-input');
         this.unlimitDanmaku = this.container.querySelector('.danmaki-option .dplayer-setting-danunlimit');
         this.unlimitDanmakuToggle = this.container.querySelector('.danmaki-option .dplayer-danunlimit-setting-input');
+        this.speedItemer = this.container.querySelector('.danmaki-option #speedItemer');
+        
 	}
 
 	tpl(options, index, tran, icons) {
@@ -84,13 +86,13 @@ class Danmaku_Template {
                         <div class="dplayer-setting-origin-panel">
                             <div class="dplayer-setting-item dplayer-setting-speed">
                                 <span class="dplayer-label">速度</span>
-  								<select id="shield-type">
-                                <option >0.5</option>
-                                <option >0.75</option>
-                                <option selected>正常</option>
-                                <option >1.25</option>
-                                <option >1.5</option>
-                                <option >2</option>
+  								<select id="speedItemer">
+                                <option value="0.5" >0.5</option>
+                                <option value="0.75" >0.75</option>
+                                <option value="1" selected>正常</option>
+                                <option value="1.25" >1.25</option>
+                                <option value="1.5" >1.5</option>
+                                <option value="2" >2</option>
   								</select>
                             </div>
                             <div class="dplayer-setting-item dplayer-setting-danmaku">

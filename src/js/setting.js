@@ -10,7 +10,6 @@ class Setting {
         this.player.template.settingButton.addEventListener('click', () => {
             this.show();
         });
-
         // loop
         this.loop = this.player.options.loop;
         this.player.template.loopToggle.checked = this.loop;
@@ -37,7 +36,6 @@ class Setting {
             }
             this.hide();
         });
-
         // show danmaku
         this.showDanmaku = this.player.user.get('danmaku');
         if (!this.showDanmaku) {
@@ -73,7 +71,6 @@ class Setting {
             this.player.user.set('danmaku', this.showDanmaku ? 1 : 0);
             this.hide();
         });
-
         // unlimit danmaku
         this.unlimitDanmaku = this.player.user.get('unlimited');
         this.player.template.unlimitDanmakuToggle.checked = this.unlimitDanmaku;
@@ -106,7 +103,6 @@ class Setting {
             this.player.user.set('unlimited', this.unlimitDanmaku ? 1 : 0);
             this.hide();
         });
-
         // speed
         this.player.template.speed.addEventListener('click', () => {
             this.player.template.settingBox.classList.add('dplayer-setting-box-narrow');
@@ -118,12 +114,9 @@ class Setting {
                 this.hide();
             });
         }
-//		this.player.danmaku_template.speedItem[i].addEventListener('change', () => {
-//			this.player.speed(this.player.template.speedItem[i].dataset.speed);
-//            this.hide();
-//        });
-		
-		
+		this.player.danmaku_template.speedItemer.addEventListener('change', () => {
+			this.player.speed(this.player.danmaku_template.speedItemer.value);
+        });
         // danmaku opacity
         if (this.player.danmaku) {
             const dWidth = 130;
@@ -175,7 +168,6 @@ class Setting {
     show () {
         this.player.template.settingBox.classList.add('dplayer-setting-box-open');
         this.player.template.mask.classList.add('dplayer-mask-show');
-
         this.player.controller.disableAutoHide = true;
     }
 }

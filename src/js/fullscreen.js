@@ -17,14 +17,16 @@ class FullScreen {
             if (this.isFullScreen('browser')) {
                 this.player.events.trigger('fullscreen');
             }
-            else if(this.isFullScreen('web')){
+            else if (this.isFullScreen('web')) {
                 utils.setScrollPosition(this.lastScrollPosition);
                 this.player.events.trigger('fullscreen_cancel');
             }
-			else if(this.isFullScreen('Widescreen')){
+            else if (this.isFullScreen('Widescreen')) {
                 utils.setScrollPosition(this.lastScrollPosition);
                 this.player.events.trigger('fullscreen_cancel');
-			}
+            } else {
+                this.player.template.danmakuSendBox.style.display = "block";
+            }
         };
         this.player.container.addEventListener('fullscreenchange', fullscreenchange);
         this.player.container.addEventListener('mozfullscreenchange', fullscreenchange);
@@ -43,12 +45,11 @@ class FullScreen {
     }
 
     request (type = 'browser') {
-        const anotherType = type === 'browser' ? 'web' : ('browser' ? 'Widescreen' : 'browser');
+        const anotherType = type === 'browser' ? 'browser' : 'web';
         const anotherTypeOn = this.isFullScreen(anotherType);
         if (!anotherTypeOn) {
             this.lastScrollPosition = utils.getScrollPosition();
         }
-
         switch (type) {
         case 'browser':
             if (this.player.container.requestFullscreen) {
@@ -63,6 +64,7 @@ class FullScreen {
             else if (this.player.video.webkitEnterFullscreen) {   // Safari for iOS
                 this.player.video.webkitEnterFullscreen();
             }
+			this.player.template.danmakuSendBox.style.display="none";
             break;
         case 'web':
             this.player.container.classList.add('dplayer-fulled');
@@ -72,7 +74,6 @@ class FullScreen {
         case 'Widescreen':
             this.player.container.classList.add('dplayer-widescreen');
 			this.player.danmaku_template.container.style.display="none";
-            document.body.classList.add('dplayer-web-fullscreen-fix');
             this.player.events.trigger('webfullscreen');
             break;
         }
@@ -94,53 +95,35 @@ class FullScreen {
             else if (document.webkitCancelFullScreen) {
                 document.webkitCancelFullScreen();
             }
-            this.player.container.classList.remove('dplayer-widescreen');
-            this.player.container.classList.remove('dplayer-fulled');
-            this.player.danmaku_template.container.style.display="inline-block";
+						this.player.template.danmakuSendBox.style.display="block";
             break;
         case 'web':
-			if (document.cancelFullScreen) {
-                document.cancelFullScreen();
-            }
-            else if (document.mozCancelFullScreen) {
-                document.mozCancelFullScreen();
-            }
-            else if (document.webkitCancelFullScreen) {
-                document.webkitCancelFullScreen();
-            }
             this.player.container.classList.remove('dplayer-fulled');
-            this.player.container.classList.remove('dplayer-widescreen');
-            this.player.danmaku_template.container.style.display="inline-block";
             document.body.classList.remove('dplayer-web-fullscreen-fix');
             this.player.events.trigger('webfullscreen_cancel');
+						this.player.template.danmakuSendBox.style.display="block";
             break;
-		case 'Widescreen':
-			if (document.cancelFullScreen) {
-                document.cancelFullScreen();
-            }
-            else if (document.mozCancelFullScreen) {
-                document.mozCancelFullScreen();
-            }
-            else if (document.webkitCancelFullScreen) {
-                document.webkitCancelFullScreen();
-            }
+				case 'Widescreen':
             this.player.container.classList.remove('dplayer-widescreen');
-            this.player.container.classList.remove('dplayer-fulled');
             this.player.danmaku_template.container.style.display="inline-block";
-            document.body.classList.remove('dplayer-web-fullscreen-fix');
             this.player.events.trigger('webfullscreen_cancel');
+						this.player.template.danmakuSendBox.style.display="block";
             break;
         }
     }
 
     toggle (type = 'browser') {
-        if (this.isFullScreen(type)) {
-            this.cancel(type);
-        }
-        else {
-            this.request(type);
-        }
+			var typelist=['browser','web','Widescreen'];
+      if (this.isFullScreen(type)) {
+				this.cancel(type);
+			}else{
+				for(let i=0;i<3;i++){
+					if (this.isFullScreen(typelist[i])) {
+            this.cancel(typelist[i]);
+					}
+				}
+        this.request(type);
+      }
     }
 }
-
 export default FullScreen;
