@@ -21,7 +21,7 @@ class Danmaku {
     }
     load () {
         let apiurl;
-            apiurl = `${this.options.api.address}?m=mukio&c=index&a=init&playerID=${this.options.api.id}&r=571`;
+        apiurl = `${this.options.api.address}?m=mukio&c=index&a=init&playerID=${this.options.api.id}`;
         const endpoints = (this.options.api.addition || []).slice(0);
         endpoints.push(apiurl);
         this.events && this.events.trigger('danmaku_load_start', endpoints);
