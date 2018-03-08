@@ -2,7 +2,7 @@
 html {
   background: linear-gradient(left, #99a, #eee, #99a);
 }
-.tcplayer {
+.m_dplayer {
   width: 980px;
   height: 556px;
   display: flex;

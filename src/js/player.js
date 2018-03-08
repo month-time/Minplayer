@@ -45,7 +45,7 @@ class DPlayer {
         this.user = new User(this);
         this.options.container.innerHTML = '<div id="player"></div>';
         this.container = this.options.container.querySelector("#player");
-
+        this.options.container.classList.add('m_dplayer');
         this.container.classList.add('dplayer');
         if (!this.options.danmaku) {
             this.container.classList.add('dplayer-no-danmaku');
