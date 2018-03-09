@@ -32,7 +32,7 @@ class DPlayer {
      * @param {Object} options - See README
      * @constructor
      */
-    constructor (options) {
+    constructor(options) {
         this.options = handleOption(options);
 
         if (this.options.video.quality) {
@@ -68,6 +68,10 @@ class DPlayer {
             tran: this.tran,
             icons: this.icons
         });
+        this.template.video.onerror = function () {
+            console.log("Error! 视频解析失败");
+            this.template.video_error.style.display="";
+        }.bind(this);
 
         this.video = this.template.video;
 

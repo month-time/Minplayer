@@ -23,6 +23,7 @@ function i18n (lang) {
 const tranTxt = {
     "zh-cn" : {
         'Danmaku is loading': '弹幕加载中',
+        'Video is Error': '视频加载失败',
         'Top': '顶部',
         'Bottom': '底部',
         'Rolling': '滚动',
@@ -61,6 +62,7 @@ const tranTxt = {
     },
     "zh-tw" : {
         'Danmaku is loading': '彈幕加載中',
+        'Video is Error': '视频加载失败',
         'Top': '頂部',
         'Bottom': '底部',
         'Rolling': '滾動',

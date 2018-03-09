@@ -25,6 +25,7 @@ class Template {
         this.playedBarTime = this.container.querySelector('.dplayer-bar-time');
         this.danmaku = this.container.querySelector('.dplayer-danmaku');
         this.danmakuLoading = this.container.querySelector('.dplayer-danloading');
+        this.video_error = this.container.querySelector('.dplayer-error');
         this.video = this.container.querySelector('.dplayer-video-current');
         this.bezel = this.container.querySelector('.dplayer-bezel-icon');
         this.playButton = this.container.querySelector('.dplayer-play-icon');
@@ -99,6 +100,7 @@ class Template {
             <div class="dplayer-bezel">
                 <span class="dplayer-bezel-icon"></span>
                 ${options.danmaku ? `<span class="dplayer-danloading">${tran('Danmaku is loading')}</span>` : ``}
+                <span class="dplayer-error" style="display:none;">${tran('Video is Error')}</span>
                 <span class="diplayer-loading-icon">
                     <svg height="100%" version="1.1" viewBox="0 0 22 22" width="100%">
                         <svg x="7" y="1">
