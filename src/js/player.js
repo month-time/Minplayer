@@ -411,6 +411,7 @@ class DPlayer {
                         this.container.classList.add('dplayer-loading');
                         const client = new WebTorrent();
                         const torrentId = video.src;
+                        
                         client.add(torrentId, (torrent) => {
                             const file = torrent.files.find((file) => file.name.endsWith('.mp4'));
                             file.renderTo(this.video, {
