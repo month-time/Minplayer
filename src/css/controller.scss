@@ -113,6 +113,7 @@
 		padding: 0 10px;
 		height: 41px;
 		position: relative;
+        transition: all 0.3s ease;
 	}
   .dplayer-icons {
         height: 38px;
@@ -496,7 +497,9 @@
             }
         }
 	.dplayer-comment-box {
-            border-top:1px solid rgba(123, 123, 123, 0.61);
+            background: #fff;
+            border:1px solid #e8e8e8;
+            border-right:none;
             display: none;
             display: block;
             position: relative;
@@ -615,9 +618,9 @@
                 height: 100%;
                 box-sizing: border-box;
                 width: 100%;
-                color: #fff;
+                color: #666;
                 &::placeholder {
-                    color: #fff;
+                    color: #999;
                     opacity: 0.8;
 					text-align: center;
                 }

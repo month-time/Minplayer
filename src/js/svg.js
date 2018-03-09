@@ -14,8 +14,8 @@ class SvgSource {
         // size is necessary
 
         return `
-            <svg xmlns="http://www.w3.org/2000/svg" width="${this.icons[type][2] || '100%'}" height="${this.icons[type][2] || '100%'}" version="1.1" viewBox="${this.icons[type][0]}">
-                <path class="dplayer-fill" style="fill:${this.iconColor}" d="${this.icons[type][1]}" id="dplayer-${type}"></path>
+            <svg xmlns="http://www.w3.org/2000/svg" width="${this.icons[type][3] || '100%'}" height="${this.icons[type][3] || '100%'}" version="1.1" viewBox="${this.icons[type][0]}">
+                <path class="dplayer-fill" style="fill:${this.icons[type][2] || this.iconColor}" d="${this.icons[type][1]}" id="dplayer-${type}"></path>
             </svg>
         `;
     }

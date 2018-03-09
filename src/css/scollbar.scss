@@ -4,6 +4,7 @@ html{ background: linear-gradient(left, #99a, #eee, #99a); }
     width: 980px;
     height: 556px;
     display: flex;
+    *{box-sizing: border-box;}
 }
 .dplayer {
 	width: 680px;
@@ -15,6 +16,8 @@ html{ background: linear-gradient(left, #99a, #eee, #99a); }
 }
 
 .danmu_pool {
+    border: 1px solid #e8e8e8;
+    box-sizing:content-box;
 	position: relative;
     border-left: 1px solid #e2e2e2;
     display: inline-block;
