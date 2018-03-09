@@ -43,8 +43,8 @@ class DPlayer {
         this.icons = new SvgCollection(this.options);
         this.events = new Events();
         this.user = new User(this);
-        this.options.container.innerHTML = '<div id="player"></div>';
-        this.container = this.options.container.querySelector("#player");
+        this.options.container.innerHTML = '<div id="m_dplayer"></div>';
+        this.container = this.options.container.querySelector("#m_dplayer");
         this.options.container.classList.add('m_dplayer');
         this.container.classList.add('dplayer');
         if (!this.options.danmaku) {
