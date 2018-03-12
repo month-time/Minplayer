@@ -1,0 +1,787 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>【年番】 Hugtto!☆Precure~ 05话 【雪飘】 - 连载新番 - 吐槽弹幕网 - tucao.tv</title>
+    <meta name="keywords" content="【年番】,Hugtto!☆Precure~,,05话,【雪飘】">
+    <meta name="description" content="老仓唯不仅享受香恋的初级变身失败待遇，连马琳的Q娃变怪属性也有。哎你不是黄毛么？怎么尽是蓝色前辈的黑历史这集里每次看到沙绫总是想笑   ">
+    <link rel="shortcut icon" href="http://www.tucao.tv/favicon.ico" />
+    <link href="http://www.tucao.tv/skin2013/overall.css?2014.12.20" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="http://www.tucao.tv/statics/js/jquery.min.js?2013.06.22"></script>
+
+    <script type="text/javascript">
+        function startmarquee(elementID, h, n, speed, delay) {
+            var t = null;
+            var box = '#' + elementID;
+            $(box).hover(function() {
+                clearInterval(t);
+            }, function() {
+                t = setInterval(start, delay);
+            }).trigger('mouseout');
+
+            function start() {
+                $(box).children('ul:first').animate({
+                    marginTop: '-=' + h
+                }, speed, function() {
+                    $(this).css({
+                        marginTop: '0'
+                    }).find('li').slice(0, n).appendTo(this);
+                })
+            }
+        }
+
+    </script>
+    <script type="text/javascript">
+        ;
+        (function($) {
+            $.fn.extend({
+                "soChange": function(o) {
+                    o = $.extend({
+                        thumbObj: null,
+                        botPrev: null,
+                        botNext: null,
+                        changeType: 'fade',
+                        thumbNowClass: 'now',
+                        thumbOverEvent: true,
+                        slideTime: 1000,
+                        autoChange: true,
+                        clickFalse: true,
+                        overStop: true,
+                        changeTime: 5000,
+                        delayTime: 300
+                    }, o || {});
+                    var _self = $(this);
+                    var thumbObj;
+                    var size = _self.size();
+                    var nowIndex = 0;
+                    var index;
+                    var startRun;
+                    var delayRun;
+
+                    function fadeAB() {
+                        if (nowIndex != index) {
+                            if (o.thumbObj) {
+                                $(o.thumbObj).removeClass(o.thumbNowClass).eq(index).addClass(o.thumbNowClass);
+                            }
+                            if (o.slideTime <= 0) {
+                                _self.eq(nowIndex).hide();
+                                _self.eq(index).show();
+                            } else if (o.changeType == 'fade') {
+                                _self.eq(nowIndex).fadeOut(o.slideTime);
+                                _self.eq(index).fadeIn(o.slideTime);
+                            } else {
+                                _self.eq(nowIndex).slideUp(o.slideTime);
+                                _self.eq(index).slideDown(o.slideTime);
+                            }
+                            nowIndex = index;
+                        }
+                    }
+
+                    function runNext() {
+                        index = (nowIndex + 1) % size;
+                        fadeAB();
+                    }
+                    _self.hide().eq(0).show();
+                    if (o.thumbObj) {
+                        thumbObj = $(o.thumbObj);
+                        thumbObj.removeClass(o.thumbNowClass).eq(0).addClass(o.thumbNowClass);
+                        thumbObj.click(function() {
+                            index = thumbObj.index($(this));
+                            fadeAB();
+                            if (o.clickFalse) {
+                                return false;
+                            }
+                        });
+                        if (o.thumbOverEvent) {
+                            thumbObj.hover(function() {
+                                index = thumbObj.index($(this));
+                                delayRun = setTimeout(fadeAB, o.delayTime);
+                            }, function() {
+                                clearTimeout(delayRun);
+                            });
+                        }
+                    }
+                    if (o.botNext) {
+                        $(o.botNext).click(function() {
+                            if (_self.queue().length < 1) {
+                                runNext();
+                            }
+                            return false;
+                        });
+                    }
+                    if (o.botPrev) {
+                        $(o.botPrev).click(function() {
+                            if (_self.queue().length < 1) {
+                                index = (nowIndex + size - 1) % size;
+                                fadeAB();
+                            }
+                            return false;
+                        });
+                    }
+                    if (o.autoChange) {
+                        startRun = setInterval(runNext, o.changeTime);
+                        if (o.overStop) {
+                            _self.hover(function() {
+                                clearInterval(startRun);
+                            }, function() {
+                                startRun = setInterval(runNext, o.changeTime);
+                            });
+                        }
+                    }
+                }
+            })
+        })(jQuery);
+
+    </script>
+    <script type="text/javascript">
+        var timeout = 500;
+        var closetimer = 0;
+        var ddmenuitem = 0;
+
+        function mopen(id) {
+            mcancelclosetime();
+            if (ddmenuitem) ddmenuitem.style.visibility = 'hidden';
+            ddmenuitem = document.getElementById(id);
+            ddmenuitem.style.visibility = 'visible';
+        }
+
+        function mclose() {
+            if (ddmenuitem) ddmenuitem.style.visibility = 'hidden';
+        }
+
+        function mclosetime() {
+            closetimer = window.setTimeout(mclose, timeout);
+        }
+
+        function mcancelclosetime() {
+            if (closetimer) {
+                window.clearTimeout(closetimer);
+                closetimer = null;
+            }
+        }
+        document.onclick = mclose;
+
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".lists_table tr").mouseover(function() {
+                $(this).addClass("over");
+            }).mouseout(function() {
+                $(this).removeClass("over");
+            })
+        });
+
+    </script>
+    <!--[if IE 6]><script src="http://www.tucao.tv/skin2013/png_ie6.js" type="text/javascript"></script><script type="text/javascript">DD_belatedPNG.fix('.header_logo a,.header_nav .nav_link');</script><![endif]-->
+</head>
+
+<body>
+    <div class="top_bg">
+        <div></div>
+    </div>
+    <div class="top">
+        <div class="header">
+            <ul class="top_nav">
+                <li class="home "><a href="http://www.tucao.tv/">吐槽</a></li>
+                <li><a href="http://www.pangci.cc/" target="_blank">胖次</a></li>
+                <li><a href="/news/">资讯</a></li>
+                <li><a href="/topic/">专题</a><b style="position:absolute;top:-10px;right:-8px;color:#39F;">BETA</b></li>
+                <!-- <li><a href="http://www.tucao.tv/event/" >活动</a></li> -->
+                <li><a href="/paixing/">排行榜</a></li>
+                <li><a href="/bgm/">番组</a></li>
+                <li><a href="http://www.tucao.tv/app/" target="_blank">客户端</a></li>
+                <li><a href="http://www.tucao.tv/play/n6543/" target="_blank"><b style="position:absolute;top:-10px;right:-8px;color:#f36;">NEW</b>游戏中心</a></li>
+                <!--<li class="map"><a id="map_link">导航</a></li>-->
+            </ul>
+            <div class="top_search">
+                <form name="search" type="get" action="http://www.tucao.tv/index.php?m=search" target="_blank"><input type="hidden" name="m" value="search" /><input type="hidden" name="c" value="index" /><input type="hidden" name="a" value="init2" /><input type="hidden" name="catid" value="" /><input type="hidden" name="time" value="" /><input type="hidden" name="order" value="" /><input type="hidden" name="username" value="" /><input type="hidden" name="tag" value="" /><input type="submit" tabindex="142" class="search_submit" value=""><input type="text" name="q" class="search_input" id="q" tabindex="141" value="" x-webkit-speech></form>
+            </div>
+            <ul class="top_user">
+                <li class="top_up"><a href="http://www.tucao.tv/index.php?m=member&c=content&a=publish&siteid=1&catid=11" target="_blank">投稿</a></li>
+                <li id="ajax_user"></li>
+                <li id="ajax_login"></li>
+            </ul>
+            <script type="text/javascript">
+                $(function() {
+                    $.ajax({
+                        type: 'GET',
+                        url: 'http://www.tucao.tv/api.php?op=user',
+                        cache: false,
+                        dataType: 'json',
+                        success: function(msg) {
+                            if (msg.islogin) {
+                                $('#top_login').hide();
+                                $('#ajax_user').html("<a href=\"http://www.tucao.tv/index.php?m=member\" class=\"red\">" + msg.nickname + "</a>&nbsp; / &nbsp;<a href=\"http://www.tucao.tv/index.php?m=member&c=index&a=logout&forward=&siteid=1\" style=\"color: #999;\">退出</a>").show();
+                            } else {
+                                $('#ajax_login').html("<a href=\"http://www.tucao.tv/index.php?m=member&c=index&a=login&siteid=1&forward=http%3A%2F%2Fwww.tucao.tv%2Fplay%2Fh4075499%2F\" class=\"red\">登录</a>&nbsp; / &nbsp;<a href=\"http://www.tucao.tv/index.php?m=member&c=index&a=register&siteid=1\" class=\"blue\">注册</a>");
+                            }
+                        }
+                    });
+                });
+
+            </script>
+        </div>
+    </div>
+
+    <div class="header">
+        <div class="header_logo"><a href="http://www.tucao.tv/" title="吐槽弹幕网"><img src="http://www.tucao.tv/skin2013/logo.png" alt="吐槽弹幕网"></a></div>
+        <div class="header_nav_bg">
+            <ul class="header_nav">
+                <li id="nav_home" style="padding-left:0px;"><a href="http://www.tucao.tv/" class="nav_link icon0">首页</a><em id="em0"></em></li>
+                <li><a href="http://www.tucao.tv/list/19/" onmouseover="mopen('nav_1')" onmouseout="mclosetime()" class="nav_link icon1">动画</a><em id="em19"></em>
+                    <dl id="nav_1" onmouseover="mcancelclosetime()" onmouseout="mclosetime()"><a href="http://www.tucao.tv/list/28/">MAD·AMV·GMV</a><a href="http://www.tucao.tv/list/6/">MMD·3D</a><a href="http://www.tucao.tv/list/25/">原创·配音</a><a href="http://www.tucao.tv/list/29/">综合·周边·其他</a></dl>
+                </li>
+                <li><a href="http://www.tucao.tv/list/20/" onmouseover="mopen('nav_2')" onmouseout="mclosetime()" class="nav_link icon2">音乐</a><em id="em20"></em>
+                    <dl id="nav_2" onmouseover="mcancelclosetime()" onmouseout="mclosetime()"><a href="http://www.tucao.tv/list/7/">acg音乐</a><a href="http://www.tucao.tv/list/31/">翻唱·原唱</a><a href="http://www.tucao.tv/list/37/">舞蹈</a><a href="http://www.tucao.tv/list/30/">VOCALOID·UTAU</a><a href="http://www.tucao.tv/list/40/">演奏·乐器</a><a href="http://www.tucao.tv/list/88/">op·ed·ost·角色歌</a><a href="http://www.tucao.tv/list/52/">Live·声优相关</a></dl>
+                </li>
+                <li><a href="http://www.tucao.tv/list/21/" onmouseover="mopen('nav_3')" onmouseout="mclosetime()" class="nav_link icon3">游戏</a><em id="em21"></em>
+                    <dl id="nav_3" onmouseover="mcancelclosetime()" onmouseout="mclosetime()"><a href="http://www.tucao.tv/list/8/">游戏影像</a><a href="http://www.tucao.tv/list/34/">网络游戏</a><a href="http://www.tucao.tv/list/44/">单机游戏</a><a href="http://www.tucao.tv/list/33/">电子竞技</a><a href="http://www.tucao.tv/list/42/">家机·掌机·手机</a></dl>
+                </li>
+                <li><a href="http://www.tucao.tv/list/22/" onmouseover="mopen('nav_4')" onmouseout="mclosetime()" class="nav_link icon4">三次元</a><em id="em22"></em>
+                    <dl id="nav_4" onmouseover="mcancelclosetime()" onmouseout="mclosetime()"><a href="http://www.tucao.tv/list/9/">喜闻乐见</a><a href="http://www.tucao.tv/list/32/">娱乐鬼畜</a><a href="http://www.tucao.tv/list/57/">科技·数码</a><a href="http://www.tucao.tv/list/61/">运动·体育</a><a href="http://www.tucao.tv/list/65/">军事情报</a><a href="http://www.tucao.tv/list/15/">宠物·猫·狗</a></dl>
+                </li>
+                <li><a href="http://www.tucao.tv/list/23/" onmouseover="mopen('nav_5')" onmouseout="mclosetime()" class="nav_link icon5">影剧</a><em id="em23"></em>
+                    <dl id="nav_5" onmouseover="mcancelclosetime()" onmouseout="mclosetime()"><a href="http://www.tucao.tv/list/39/">电视剧</a><a href="http://www.tucao.tv/list/38/">电影</a><a href="http://www.tucao.tv/list/16/">综艺娱乐</a><a href="http://www.tucao.tv/list/27/">完结剧集</a></dl>
+                </li>
+                <li class="on"><a href="http://www.tucao.tv/list/24/" onmouseover="mopen('nav_6')" onmouseout="mclosetime()" class="nav_link icon6">新番</a><em id="em24"></em>
+                    <dl id="nav_6" onmouseover="mcancelclosetime()" onmouseout="mclosetime()"><a href="http://www.tucao.tv/list/11/" class="sub_on">连载新番</a><a href="http://www.tucao.tv/list/43/">天朝出品</a><a href="http://www.tucao.tv/list/26/">OAD·OVA·剧场版</a><a href="http://www.tucao.tv/list/10/">完结番组</a></dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $.getJSON("http://www.tucao.tv/api/today_add.php", function(result) {
+            $("#em0").html("+" + result[0]);
+            $("#em19").html("+" + result[19]);
+            $("#em20").html("+" + result[20]);
+            $("#em21").html("+" + result[21]);
+            $("#em22").html("+" + result[22]);
+            $("#em23").html("+" + result[23]);
+            $("#em24").html("+" + result[24]);
+            $("#em25").html("+" + result[25]);
+        });
+
+    </script>
+
+    <div style="padding-top:20px;text-align:center;"><a href="http://www.tucao.tv/index.php?m=poster&c=index&a=poster_click&username=&spaceid=6&id=183&url=" target="_blank"><img src="http://img.tucao.tv/uploadfile/2018/0210/20180210064101717.jpg" alt="" /></a></div>
+
+
+    <link href="http://www.tucao.tv/skin2013/show.css?2014.05.02" rel="stylesheet" type="text/css" />
+<!--    <script src="http://www.tucao.tv/skin2013/player.js?2016.01.27"></script>-->
+    <script src="./player.js"></script>
+<ul id="player_code" mid="4075311_">
+    <li>type=189&amp;vid=6130531959803864|</li>
+    <li>11-4075311-1</li>
+</ul>
+    <script language="javascript">
+        $(document).ready(function() {
+            $("#shadow").css("height", $(document).height()).hide();
+            $(".lightSwitcher").click(function() {
+                $("#shadow").toggle();
+                if ($("#shadow").is(":hidden")) $(this).html("关灯").removeClass("turnedOff");
+                else $(this).html("开灯").addClass("turnedOff");
+            });
+        });
+
+    </script>
+
+    <div class="main" style="padding-bottom:0px;" id="play_ren">
+        <div class="new_t">
+            <div class="new_tool">
+                <ul>
+                    <li><a class="ico6 tool_ol" href="http://www.tucao.tv/ol/" target="_blank"><em id="olThis_a"></em><p>正在看</p></a></li>
+                    <li><a class="ico5 tool_comment"><em id="comment_a">0</em><p>发评论</p></a></li>
+                    <script type="text/javascript">
+                        $(function() {
+                            var speed = 1000;
+                            var windowHeight = parseInt($("body").css("height"));
+                            $(".tool_comment").click(function() {
+                                $("body").animate({
+                                    "scrollTop": windowHeight
+                                }, speed);
+                            });
+                        });
+
+                    </script>
+                    <li><a class="ico2 tool_fav" onclick="add_favorite('【年番】 Hugtto!☆Precure~  05话 【雪飘】');"><em id="fav_a"></em><p>加收藏</p></a></li>
+                    <li class="bdsharebuttonbox"><a class="ico3 tool_share"><em class="bds_count"></em><p>分享到</p></a></li>
+                </ul>
+            </div>
+            <div class="showpos"><a href="http://www.tucao.tv/list/24/">新番</a> / <a href="http://www.tucao.tv/list/11/">连载新番</a> / <em class="show_time">2018-03-06 15:27:27</em></div>
+            <h1 class="show_title">【年番】 Hugtto!☆Precure~ 05话 【雪飘】<span class="subtitle">ＨＵＧっと！プリキュア</span><span style="color:#F40;">【推荐】</span><b id="title_part"></b></h1>
+        </div>
+        <!--
+  <div style="padding:10px 15px 10px 15px;line-height:16px;font-size:14px;margin-top:14px;background-color:#fffcb5;border:1px dashed #fdb440;color:#f78600;text-align:center;">如果看不到视频的话 清空浏览器缓存也许能解决；tudou源看不到的话重新导入规则 <a href="http://www.tucao.tv/play/h4055237/" style="color:#0C0;" target="_blank">h4055237</a> 介绍里有规则连接；chrome方法2 <a href="http://www.tucao.tv/play/h4057224/" style="color:#0C0;" target="_blank">h4057224</a> NEW</div>
+  -->
+        <div id="video_part"></div>
+        <div class="clear"></div>
+        <div id="player"></div>
+    </div>
+
+    <div class="main" style="padding-top:0px;" id="show_share">
+        <div class="left" style="width:640px;background-color:#FFF;">
+            <dl class="show_info">
+                <dt class="favorite" onclick="add_favorite('【年番】 Hugtto!☆Precure~  05话 【雪飘】');">收藏：<i id="fav"></i></dt><dt>观众：<i id="olThis"></i></dt><dt>评论：<i id="comment">0</i></dt><dt>弹幕：<i id="tm"><script language="JavaScript" src="http://www.tucao.tv/index.php?m=mukio&c=index&a=tj&playerID=11-4075499-1-0"></script></i></dt><dt>播放：<i id="hits"></i></dt>
+                <dd class="now">介绍</dd>
+                <dd>在线</dd>
+                <dd>外链</dd>
+            </dl>
+            <dl class="show_share">
+                <dd><a href="http://www.tucao.tv/index.php?m=message&c=index&a=send&username=林小萌&t=【年番】 Hugtto!☆Precure~  05话 【雪飘】&url=http://www.tucao.tv/play/h4075499/" target="_blank" class="blue">报错</a> / <a target="_blank" class="blue" href="http://www.tucao.tv/index.php?m=member&c=content&a=publish&siteid=1&catid=11">投稿</a></dd>
+                <dt id="bdshare" class="bdsharebuttonbox" style="float:right;"><a class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪</a><a class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">腾讯</a><a class="bds_renren" data-cmd="renren" title="分享到人人网">人人</a><a class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧">贴吧</a><a class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a><a class="bds_count" data-cmd="count"></a></dt><dt style="font-weight:bold;">分享到：</dt>
+            </dl>
+            <div class="tab_mod">
+                <!-- c1 -->
+                <style>
+                    .newppcp1 {
+                        background-color: #fff;
+                        width: 100%;
+                        position: relative;
+                        margin-top: 4px;
+                    }
+
+                    .newppcp1 img {
+                        width: 100%;
+                    }
+
+                    .newppcp1 ul li {
+                        display: none
+                    }
+
+                    .newppcp1 ol {
+                        position: absolute;
+                        right: 10px;
+                        bottom: 10px
+                    }
+
+                    .newppcp1 ol li {
+                        cursor: pointer;
+                        float: left;
+                        margin-left: 5px;
+                        border-radius: 100%;
+                        height: 6px;
+                        width: 6px;
+                        background-color: #fff;
+                        overflow: hidden;
+                        display: block
+                    }
+
+                    .newppcp1 ol .now {
+                        background-color: #000
+                    }
+
+                </style>
+                <script type="text/javascript">
+                    $(function() {
+                        var index = 0;
+                        var timer = setInterval(function() {
+                            index = (index == 2) ? 0 : index + 1;
+                            $(".newppcp1 ul li").hide().eq(index).show();
+                            $('.newppcp1 ol li').eq(index).addClass('now').siblings().removeClass('now')
+                        }, 9000);
+                        $(".newppcp1 ol li").hover(function() {
+                            var index = $(this).index();
+                            $(".newppcp1 ul li").eq(index).show().siblings().hide();
+                            $(this).addClass('now').siblings().removeClass('now')
+                        })
+                    })
+
+                </script>
+                <div class="newppcp1">
+                    <ul>
+                        <li style="display:list-item;"><a href="http://www.tucao.tv/index.php?m=poster&c=index&a=poster_click&username=&spaceid=7&id=25&url=" target="_blank"><img src="http://img.tucao.tv/uploadfile/2017/0718/20170718070651357.gif" alt="购买时记得说明来自吐槽网哦~~~" /></a></li>
+                        <li><a href="http://www.tucao.tv/index.php?m=poster&c=index&a=poster_click&username=&spaceid=7&id=24&url=" target="_blank"><img src="http://img.tucao.tv/uploadfile/2017/0718/20170718070609596.gif" alt="购买时记得说明来自吐槽网哦~~~" /></a></li>
+                        <li><a href="http://www.tucao.tv/index.php?m=poster&c=index&a=poster_click&username=&spaceid=7&id=23&url=" target="_blank"><img src="http://img.tucao.tv/uploadfile/2017/0718/20170718070651357.gif" alt="购买时记得说明来自吐槽网哦~~~" /></a></li>
+                    </ul>
+                    <ol>
+                        <li class="now"></li>
+                        <li></li>
+                        <li></li>
+                    </ol>
+                </div>
+                <div class="clear"></div>
+                <!-- c1 -->
+                <!-- c2 -->
+                <style>
+                    .newppcp2 {
+                        background-color: #fff;
+                        width: 100%;
+                        position: relative;
+                        margin-top: 4px;
+                    }
+
+                    .newppcp2 img {
+                        width: 100%;
+                    }
+
+                    .newppcp2 ul li {
+                        display: none
+                    }
+
+                    .newppcp2 ol {
+                        position: absolute;
+                        right: 10px;
+                        bottom: 10px
+                    }
+
+                    .newppcp2 ol li {
+                        cursor: pointer;
+                        float: left;
+                        margin-left: 5px;
+                        border-radius: 100%;
+                        height: 6px;
+                        width: 6px;
+                        background-color: #fff;
+                        overflow: hidden;
+                        display: block
+                    }
+
+                    .newppcp2 ol .now {
+                        background-color: #000
+                    }
+
+                </style>
+                <script type="text/javascript">
+                    $(function() {
+                        var index = 0;
+                        var timer = setInterval(function() {
+                            index = (index == 2) ? 0 : index + 1;
+                            $(".newppcp2 ul li").hide().eq(index).show();
+                            $('.newppcp2 ol li').eq(index).addClass('now').siblings().removeClass('now')
+                        }, 9000);
+                        $(".newppcp2 ol li").hover(function() {
+                            var index = $(this).index();
+                            $(".newppcp2 ul li").eq(index).show().siblings().hide();
+                            $(this).addClass('now').siblings().removeClass('now')
+                        })
+                    })
+
+                </script>
+                <div class="newppcp2">
+                    <ul>
+                        <li style="display:list-item;"><a href="http://www.tucao.tv/index.php?m=poster&c=index&a=poster_click&username=&spaceid=8&id=26&url=" target="_blank"><img src="http://img.tucao.tv/uploadfile/2018/0209/20180209054741556.jpg" alt="购买时记得说明来自吐槽网哦~~~" /></a></li>
+                        <li><a href="http://www.tucao.tv/index.php?m=poster&c=index&a=poster_click&username=&spaceid=8&id=28&url=" target="_blank"><img src="http://img.tucao.tv/uploadfile/2018/0209/20180209054741556.jpg" alt="购买时记得说明来自吐槽网哦~~~" /></a></li>
+                        <li><a href="http://www.tucao.tv/index.php?m=poster&c=index&a=poster_click&username=&spaceid=8&id=27&url=" target="_blank"><img src="http://img.tucao.tv/uploadfile/2018/0209/20180209054741556.jpg" alt="购买时记得说明来自吐槽网哦~~~" /></a></li>
+                    </ul>
+                    <ol>
+                        <li class="now"></li>
+                        <li></li>
+                        <li></li>
+                    </ol>
+                </div>
+                <div class="clear"></div>
+                <!-- c2 -->
+                <!-- c6 -->
+                <!-- c6 -->
+                <div class="show_content"><strong>老仓唯不仅享受香恋的初级变身失败待遇，连马琳的Q娃变怪属性也有。哎你不是黄毛么？怎么尽是蓝色前辈的黑历史<br />
+<br />
+这集里每次看到沙绫总是想笑，不是面无表情，就是一脸阴沉发出渗人的笑。制作组你们这里真的想让药姐接书记的班不成？！</strong><br />
+                    <br />
+                    <strong>本部的反派这季智商和能力的确很强，连续两集都各种针对Q娃方，要不是有主角光环优势，只怕又要被团灭一次</strong><br />
+                    <br />
+                    <strong>抱Q第5话：飞舞天际！<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;加油加油！Cure Etoile！&nbsp; &nbsp;封面ID：67537147&nbsp; &nbsp;配图ID：67497029</strong><br />
+                    <img src="http://img.tucao.tv/uploadfile/2018/0306/20180306031704810.jpg" /><br />
+                    <div class="para" label-module="para" style="font-size: 14px; word-wrap: break-word; color: rgb(51, 51, 51); margin-bottom: 15px; text-indent: 2em; line-height: 24px; zoom: 1; font-family: arial, 宋体, sans-serif;">
+                        <div class="para" label-module="para" style="word-wrap: break-word; margin-bottom: 15px; text-indent: 2em; line-height: 24px; zoom: 1;">想成为超帅气大姐姐的中学二年级的<a href="https://baike.baidu.com/item/%E9%87%8E%E4%B9%83%E8%8A%B1" style="color: rgb(19, 110, 194); text-decoration-line: none;" target="_blank">野乃花</a>，剪错了刘海上学迟到了，转校第一天就失败了！有一天碰到了不可思议的婴儿以及照顾婴儿的仓鼠妖精哈利哈姆&middot;哈利，这时&ldquo;黑暗明日社&rdquo;的邪恶组织，瞄准了&ldquo;未来水晶&rdquo;，敌人召唤了怪物袭来。小花想要保护抱碳的强烈的心情而产生了新的未来水晶，变身成为元气的光之美少女Cure Yell参战。</div>
+                        <div class="para" label-module="para" style="word-wrap: break-word; margin-bottom: 15px; text-indent: 2em; line-height: 24px; zoom: 1;">未来水晶是创造世界上充满着未来的力量。如果被夺走了，大家的未来就会消失了。为了保卫大家的未来，守护重要的事物以及小婴儿抱碳，Cure Yell 的战斗拉开帷幕</div>
+                    </div>
+                    <br />
+                    <div class="clear"></div>
+                </div>
+                <script language="javascript">
+                    $(document).ready(function() {
+                        $(".show_content a").each(function() {
+                            $(this).attr("target", "_blank");
+                        });
+                    });
+
+                </script>
+                <script type="text/javascript">
+                    $(document).ready(function() {
+                        var ywidth = 616;
+                        $(".show_content img").each(function() {
+                            if ($(this).width() > ywidth) {
+                                $(this).width(ywidth);
+                            }
+                        });
+                    });
+
+                </script>
+                <div class="show_key" style="border-bottom:none;">
+                    <ul>
+                        <li class="on"><b>关键词：</b></li>
+                        <li><a href="http://www.tucao.tv/index.php?m=search&c=index&a=init&q=【年番】 @tag&sort=date" target="_blank">【年番】</a></li>
+                        <li><a href="http://www.tucao.tv/index.php?m=search&c=index&a=init&q=Hugtto!☆Precure~ @tag&sort=date" target="_blank">Hugtto!☆Precure~</a></li>
+                        <li><a href="http://www.tucao.tv/index.php?m=search&c=index&a=init&q=05话 @tag&sort=date" target="_blank">05话</a></li>
+                        <li><a href="http://www.tucao.tv/index.php?m=search&c=index&a=init&q=【雪飘】 @tag&sort=date" target="_blank">【雪飘】</a></li>
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="tab_mod" style="display:none; border-bottom:none;">
+                <ul id="oluser" style="border-bottom:none;"></ul>
+            </div>
+            <div class="tab_mod" style="display:none;border-bottom:none;"><input id="show_mini" class="show_mini" readOnly style="border-bottom:none;"></div>
+            <script type="text/javascript">
+                $(function() {
+                    $('.tab_mod').soChange({
+                        thumbObj: '.show_info dd',
+                        slideTime: 0,
+                        thumbOverEvent: false,
+                        autoChange: false
+                    });
+                });
+
+            </script>
+
+            <div class="title_red" style="margin-top:0px;border-top:none;"><a class="more" onclick="comment_iframe.window.location.reload()">刷新</a><b class="name icon_r icon_comment">评论</b></div>
+            <div id="show_comment"><a onclick="$('#comment_iframe').attr('src','http://www.tucao.tv/index.php?m=comment&c=index&a=init&commentid=content_11-4075499-1&hot=0&iframe=1').show();$(this).hide();" class="comment_src" style="background-image:url(http://www.tucao.tv/skin2014/comment_link.png);background-position: center bottom;background-repeat: no-repeat;"></a><iframe src="" width="100%" height="100%" id="comment_iframe" frameborder="0" scrolling="no" style="display:none;"></iframe></div>
+        </div>
+        <div class="right" style="width:300px;background-color:#FFF;padding:16px 0px 0px 24px;">
+            <div class="title_gray" style="margin-top:0px;"><a href="http://www.tucao.tv/play/u83254/" target="_blank" class="name icon_r r_user">林小萌</a></div>
+            <div class="gray_show show_user">
+                <dl>
+                    <dd><a href="http://www.tucao.tv/play/u83254/" target="_blank"><img src="http://www.tucao.tv/phpsso_server/uploadfile/avatar/9/4/83277/90x90.jpg" alt="林小萌"></a></dd>
+                    <dt><span id="show_lv28"></span>我林小萌又回来啦！！！  （＃°Д°）回了鬼啊，视频源又开始不稳定了，我要等到源稳定后才会继续补旧番计划
+　　　　　　　【小贴士：打开视频后如果显示“播放地址出错了”，请反复点击视频画面，有50%的概率加载进度条成功，随后再刷新一下页面即可观看；如果显示“加载视频信息出错”，那就请各位过段时间再来尝试观看，因为此时服务器内所有视频源均无法观看。望各位多有包涵，敬请谅见————】<div class="clear"></div><p><a href="http://www.tucao.tv/play/u83254/" target="_blank">主页</a><a href="http://www.tucao.tv/index.php?m=message&c=index&a=send&username=林小萌" target="_blank" class="show_message">短信</a></p></dt>
+                </dl>
+                <div class="clear"></div>
+            </div>
+            <style>
+                .newppcp5 {
+                    background-color: #fff;
+                    width: 100%;
+                    position: relative;
+                    margin-top: 20px;
+                }
+
+                .newppcp5 img {
+                    width: 100%;
+                }
+
+                .newppcp5 ul li {
+                    display: none
+                }
+
+                .newppcp5 ol {
+                    position: absolute;
+                    right: 10px;
+                    bottom: 10px
+                }
+
+                .newppcp5 ol li {
+                    cursor: pointer;
+                    float: left;
+                    margin-left: 5px;
+                    border-radius: 100%;
+                    height: 6px;
+                    width: 6px;
+                    background-color: #fff;
+                    overflow: hidden;
+                    display: block
+                }
+
+                .newppcp5 ol .now {
+                    background-color: #000
+                }
+
+            </style>
+            <script type="text/javascript">
+                $(function() {
+                    var index = 0;
+                    var timer = setInterval(function() {
+                        index = (index == 2) ? 0 : index + 1;
+                        $(".newppcp5 ul li").hide().eq(index).show();
+                        $('.newppcp5 ol li').eq(index).addClass('now').siblings().removeClass('now')
+                    }, 9000);
+                    $(".newppcp5 ol li").hover(function() {
+                        var index = $(this).index();
+                        $(".newppcp5 ul li").eq(index).show().siblings().hide();
+                        $(this).addClass('now').siblings().removeClass('now')
+                    })
+                })
+
+            </script>
+            <div class="newppcp5">
+                <ul>
+                    <li style="display:list-item;"><a href="http://www.tucao.tv/index.php?m=poster&c=index&a=poster_click&username=&spaceid=10&id=29&url=" target="_blank"><img src="http://img.tucao.tv/uploadfile/2018/0228/20180228064434940.jpg" alt="购买时记得说明来自吐槽网哦~~~" /></a></li>
+                    <li><a href="http://www.tucao.tv/index.php?m=poster&c=index&a=poster_click&username=&spaceid=10&id=44&url=" target="_blank"><img src="http://img.tucao.tv/uploadfile/2018/0228/20180228064434940.jpg" alt="购买时记得说明来自吐槽网哦~~~" /></a></li>
+                    <li><a href="http://www.tucao.tv/index.php?m=poster&c=index&a=poster_click&username=&spaceid=10&id=227&url=" target="_blank"><img src="http://img.tucao.tv/uploadfile/2018/0228/20180228064434940.jpg" alt="" /></a></li>
+                </ul>
+                <ol>
+                    <li class="now"></li>
+                    <li></li>
+                    <li></li>
+                </ol>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div id="shadow"></div>
+
+    <script type="text/javascript">
+        function add_favorite(title) {
+            $.getJSON('http://www.tucao.tv/api.php?op=add_favorite&title=' + encodeURIComponent(title) + '&url=' + encodeURIComponent(location.href) + '&contentid=' + 4075499 + '&modelid=' + 11 + '&cuserid=' + 83254 + '&thumb=' + encodeURIComponent('http://img.tucao.tv/uploadfile/2018/0306/20180306031424379.png') + '&' + Math.random() + '&callback=?', function(data) {
+                if (data.status == 1) {
+                    $(".favorite").html('收藏：+1');
+                    $(".tool_fav").html('<em>+1</em><p>加收藏</p>');
+                } else {
+                    alert('无法操作');
+                }
+            });
+        }
+
+    </script>
+    <script>
+        window._bd_share_config = {
+            "common": {
+                "bdSnsKey": {
+                    "tsina": "1218775816",
+                    "tqq": "100273629"
+                },
+                "bdText": "【年番】 Hugtto!☆Precure~  05话 【雪飘】 up 林小萌 @吐槽弹幕网",
+                "bdMini": "2",
+                "bdMiniList": false,
+                "bdPic": "http://img.tucao.tv/uploadfile/2018/0306/20180306031424379.png",
+                "bdStyle": "0",
+                "bdSize": "16"
+            },
+            "share": {}
+        };
+        with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
+
+    </script>
+    <script language="JavaScript" src="http://www.tucao.tv/skin2014/newplay.js"></script>
+    <script language="JavaScript" src="http://www.tucao.tv/api.php?op=count&id=4075499&modelid=11"></script>
+
+    <div id="float_show">
+        <div class="float_div">
+            <ul><a id="command" class="lightSwitcher" href="#play_ren">关灯</a>
+                <a href="http://www.tucao.tv/ol/" target="_blank">
+                    <p id="show_olthis"></p>观众</a>
+                <div href="javascript:void(0);" id="gotop">TOP</div>
+                <script type="text/javascript">
+                    (function($) {
+                        $('#gotop').click(function(event) {
+                            $('html, body').animate({
+                                scrollTop: 0
+                            }, 400);
+                        });
+                        $(window).scroll(function(event) {
+                            if ($(this).scrollTop() > 0) {
+                                if ($.browser.ie6) {
+                                    $('#gotop').css('top', $(this).scrollTop() + $(this).height() - 170);
+                                }
+                                if ($('#gotop').css('display') == 'none') {
+                                    $('#gotop').fadeIn();
+                                }
+                            } else {
+                                $('#gotop').fadeOut();
+                            }
+                        });
+                    })(jQuery);
+
+                </script>
+            </ul>
+        </div>
+    </div>
+
+    <style>
+        .newppxp1 {
+            background-color: #fff;
+            position: relative;
+            margin: auto;
+            margin-top: 5px;
+            width: 964px;
+        }
+
+        .newppxp1 img {
+            width: 100%;
+        }
+
+        .newppxp1 ul li {
+            display: none
+        }
+
+        .newppxp1 ol {
+            position: absolute;
+            right: 10px;
+            bottom: 10px
+        }
+
+        .newppxp1 ol li {
+            cursor: pointer;
+            float: left;
+            margin-left: 5px;
+            border-radius: 100%;
+            height: 6px;
+            width: 6px;
+            background-color: #fff;
+            overflow: hidden;
+            display: block
+        }
+
+        .newppxp1 ol .now {
+            background-color: #000
+        }
+
+    </style>
+    <script type="text/javascript">
+        $(function() {
+            var index = 0;
+            var timer = setInterval(function() {
+                index = (index == 2) ? 0 : index + 1;
+                $(".newppxp1 ul li").hide().eq(index).show();
+                $('.newppxp1 ol li').eq(index).addClass('now').siblings().removeClass('now')
+            }, 9000);
+            $(".newppxp1 ol li").hover(function() {
+                var index = $(this).index();
+                $(".newppxp1 ul li").eq(index).show().siblings().hide();
+                $(this).addClass('now').siblings().removeClass('now')
+            })
+        })
+
+    </script>
+    <div class="newppxp1">
+        <ul>
+            <li style="display:list-item;"><a href="http://www.tucao.tv/index.php?m=poster&c=index&a=poster_click&username=&spaceid=11&id=202&url=" target="_blank"><img src="http://img.tucao.tv/uploadfile/2018/0116/20180116105706.jpg" alt="舰队收藏" /></a></li>
+            <li><a href="http://www.tucao.tv/index.php?m=poster&c=index&a=poster_click&username=&spaceid=11&id=696&url=" target="_blank"><img src="http://img.tucao.tv/uploadfile/2018/0116/20180116105706.jpg" alt="蕾姆拉姆" /></a></li>
+            <li><a href="http://www.tucao.tv/index.php?m=poster&c=index&a=poster_click&username=&spaceid=11&id=695&url=" target="_blank"><img src="http://img.tucao.tv/uploadfile/2018/0116/20180116105706.jpg" alt="小学生" /></a></li>
+        </ul>
+        <ol>
+            <li class="now"></li>
+            <li></li>
+            <li></li>
+        </ol>
+    </div>
+    <div class="clear"></div>
+
+    <div class="main_footer"></div>
+    <div class="footer">
+        <div class="footer_info">
+            <dl>
+                <dd><a href="http://www.tucao.tv/aboutus/" target="_blank">关于吐槽</a></dd><dt><a href="http://www.tucao.tv/contactus/" target="_blank">联系</a><a href="http://www.tucao.tv/copyright/" target="_blank">声明</a><a href="http://www.tucao.tv/help/" target="_blank">帮助</a><a href="http://www.tucao.tv/ads/" target="_blank">广告</a></dt>
+                <dd style="margin-top:9px;"><a href="http://www.tucao.tv/announce/" target="_blank">公告</a></dd><dt><a href="http://www.tucao.tv/play/a182/" target="_blank">Error #2046 的可能解决方法</a></dt><dt><a href="http://www.tucao.tv/play/a181/" target="_blank">play播放器更新了~</a></dt><dt><a href="http://www.tucao.tv/play/a178/" target="_blank">暂停客户端的使用</a></dt></dl>
+            <dl>
+                <dd><a href="http://www.tucao.tv/index.php?m=member&c=index" target="_blank">会员</a></dd><dt><a href="http://www.tucao.tv/index.php?m=member&c=index&a=login&siteid=1" target="_blank">登录</a><a href="http://www.tucao.tv/index.php?m=member&c=index&a=register&siteid=1" target="_blank">注册</a></dt><dt><a href="http://www.tucao.tv/play/h921582/" target="_blank">忘记密码？</a><a href="http://www.tucao.tv/play/h921582/" target="_blank">忘记用户名怎么办？</a></dt><dt><a href="http://www.tucao.tv/play/h921581/" target="_blank">注册流程！</a><a href="http://www.tucao.tv/play/h921581/" target="_blank">注册失败怎么办呢！</a></dt></dl>
+            <dl>
+                <dd>应用</dd><dt><a href="http://www.tucao.tv/api.txt" target="_blank">API</a><a href="http://www.tucao.tv/zhuomian.php" target="_blank">桌面</a><a href="http://tieba.baidu.com/f?kw=tucao" target="_blank">贴吧</a><a href="http://baike.baidu.com/view/5807522.htm" target="_blank">百科</a><a href="http://weibo.com/5075389109" target="_blank">微博</a><a href="http://pan.baidu.com/s/12EwAM" target="_blank">cc娘</a></dt><dt><a href="http://www.tucao.tv/app/" target="_blank">客户端</a></dt></dl>
+            <dl class="footer_count">
+                <dd><a href="http://www.tucao.tv/ol/" target="_blank">统计</a></dd><dt>投稿：10,8893+ 章</dt><dt>弹幕：172,9536+ 回</dt><dt>播放：3580,6769+ 次</dt><dt>会员：20,0093+ 人</dt><dt>评论：11,9509+ 条</dt><dt>收藏：7,9458+ 件</dt></dl>
+        </div>
+        <div class="clear">
+            <script src="http://www.tucao.tv/ol.php?cid=407549911&v=1"></script>
+            <script src="http://s4.cnzz.com/stat.php?id=2844550&web_id=2844550" language="JavaScript"></script>
+        </div>
+        <!-- 统计 -->
+        <div class="footer_by">
+            <dl>
+                <dd><a href="http://www.tucao.tv/">吐槽 - tucao.tv/.tv</a> &nbsp; version 7.0 , updates 2017.03.07</dd><dt>粤ICP备11055075号</dt></dl>
+        </div>
+    </div>
+</body>
+
+</html>
