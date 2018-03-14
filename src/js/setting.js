@@ -117,6 +117,9 @@ class Setting {
 		this.player.danmaku_template.speedItemer.addEventListener('change', () => {
 			this.player.speed(this.player.danmaku_template.speedItemer.value);
         });
+        this.player.danmaku_template.fontItemer.addEventListener('change', () => {
+			this.player.template.danmaku.style.fontFamily=this.player.danmaku_template.fontItemer.value;
+        });
         // danmaku opacity
         if (this.player.danmaku) {
             const dWidth = 130;

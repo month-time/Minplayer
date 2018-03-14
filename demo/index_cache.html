@@ -122,8 +122,9 @@ var dp = new M_dplayer({
                     file.renderTo(video, {
                         autoplay: player.options.autoplay
                     }, () => {
+                        player.template.video_error.style.display="none";
                         player.container.classList.remove('dplayer-loading');
-                    });					
+                    });
 					// Trigger statistics refresh
         			torrent.on('done', onDone)
         			setInterval(onProgress, 500)

@@ -23,6 +23,7 @@ class Danmaku_Template {
         this.unlimitDanmaku = this.container.querySelector('.danmaki-option .dplayer-setting-danunlimit');
         this.unlimitDanmakuToggle = this.container.querySelector('.danmaki-option .dplayer-danunlimit-setting-input');
         this.speedItemer = this.container.querySelector('.danmaki-option #speedItemer');
+        this.fontItemer = this.container.querySelector('.danmaki-option #fontItemer');
         
 	}
 
@@ -105,6 +106,14 @@ class Danmaku_Template {
                                     </div>
                                 </div>
                             </div>
+                            <div class="dplayer-setting-item dplayer-setting-fontIte">
+                                <span class="dplayer-label">弹幕字体</span>
+  								<select id="fontItemer">
+                                <option value="微软雅黑" >微软雅黑</option>
+                                <option value="黑体" >黑体</option>
+                                <option value="苹方" selected>苹方</option>
+  								</select>
+                            </div>
                             <div class="dplayer-setting-item-line dplayer-setting-loop">
                                 <span class="dplayer-label">洗脑循环</span>
                                 <div class="dplayer-toggle">
@@ -162,6 +171,9 @@ class Danmaku_Template {
 		}
 		event.srcElement.className = "active";
 	}
+    change_fonts(){
+//        danmaku
+    }
 }
 
 export default Danmaku_Template;

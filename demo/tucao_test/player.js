@@ -7,14 +7,6 @@ $(function(){
 });
 
 function created_html5() {
-    var voide=[];
-    for(var i=0;i<2;i++){
-        voide.push(document.querySelectorAll("#player_code li")[i].innerText);
-        voide[i]=voide[i].replace(/\|/,"");
-    }
-    var dateto=Date.parse(new Date()).toString();
-    dateto=dateto.substring(0,dateto.length-3);
-    
     var link = document.createElement('link');
     link.setAttribute("href", "https://month-time.github.io/M_dplayer/demo/orther/M_dplayer.min.css");
     link.setAttribute("rel", "stylesheet");
@@ -25,17 +17,21 @@ function created_html5() {
     script.src = "https://month-time.github.io/M_dplayer/demo/orther/M_dplayer.min.js";
     document.body.querySelector("#player").appendChild(script);
     script.onload = function () {
-        var voide = [];
-        for (var i = 0; i < 2; i++) {
+        var voide=[];
+        for(var i=0;i<2;i++){
             voide.push(document.querySelectorAll("#player_code li")[i].innerText);
-            voide[i] = voide[i].replace(/\|/, "");
         }
-        var dateto = Date.parse(new Date()).toString();
-        dateto = dateto.substring(0, dateto.length - 3);
+        voide[0]=voide[0].match(/type=.*?\|/g);
+        for(var i=0;i<voide[0].length;i++){
+            voide[0][i]=voide[0][i].replace(/\|/,"");
+        }
+        var activeLink=parseInt(window.location.hash.replace("#",""))-1||0;
+        var dateto=Date.parse(new Date()).toString();
+        dateto=dateto.substring(0,dateto.length-3);
         $.ajax({
             type: 'get',
 //            url:"http://api.tucao.tv/api/playurl",
-            url: "http://api.moeccg.com/proxy_tucao?" + voide[0] + "&key=tucao.cc&r=" + dateto,
+            url: "http://api.moeccg.com/proxy_tucao?" + voide[0][activeLink] + "&key=tucao.cc&r=" + dateto,
             success: function (result) {
                 console.log(result);
                 if (typeof (result) === "object") {
@@ -48,7 +44,7 @@ function created_html5() {
                             url: playurl,
                         },
                         danmaku: {
-                            id: voide[1]+'-0',
+                            id: voide[1]+'-'+activeLink,
                             api: '/index.php',
                             token: 'demo',
                             user: 'test',
