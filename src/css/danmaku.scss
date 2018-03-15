@@ -6,17 +6,21 @@
     bottom: 0;
     font-size: 22px;
     color: #fff;
+    font-family: "黑体";
     .dplayer-danmaku-item {
         display: inline-block;
         pointer-events: none;
         user-select: none;
         cursor: default;
+        font-weight: 600;
         white-space: nowrap;
-        text-shadow: .5px .5px .5px rgba(0, 0, 0, .5);
+        border: rgba(0, 0, 0, 0.8);
+        text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.67);
         &--demo {
             position: absolute;
             visibility: hidden;
         }
+        
     }
     .dplayer-danmaku-right {
         position: absolute;

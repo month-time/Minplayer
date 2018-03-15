@@ -38,27 +38,27 @@ function created_html5() {
                     var urltree = document.createElement('abc').innerHTML = result;
                     var playurl = urltree.querySelector('url').innerHTML;
                     playurl = playurl.replace('<![CDATA[', '').replace(']]>', '');
-                    var dp = new M_dplayer({
-                        container: document.getElementById('player'),
-                        video: {
-                            url: playurl,
-                        },
-                        danmaku: {
-                            id: voide[1]+'-'+activeLink,
-                            api: '/index.php',
-                            token: 'demo',
-                            user: 'test',
-                            margin: {
-                                bottom: '15%'
-                            },
-                            poster: '',
-                            unlimited: true,
-                            callback(results) {
-                                console.log("弹幕装填成功");
-                            }
-                        },
-                    });
                 }
+                var dp = new M_dplayer({
+                    container: document.getElementById('player'),
+                    video: {
+                        url: playurl,
+                    },
+                    danmaku: {
+                        id: voide[1] + '-' + activeLink,
+                        api: '/index.php',
+                        token: 'demo',
+                        user: 'test',
+                        margin: {
+                            bottom: '15%'
+                        },
+                        poster: '',
+                        unlimited: true,
+                        callback(results) {
+                            console.log("弹幕装填成功");
+                        }
+                    },
+                });
             },
         });
     }

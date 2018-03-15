@@ -110,8 +110,11 @@ class Danmaku_Template {
                                 <span class="dplayer-label">弹幕字体</span>
   								<select id="fontItemer">
                                 <option value="微软雅黑" >微软雅黑</option>
-                                <option value="黑体" >黑体</option>
-                                <option value="苹方" selected>苹方</option>
+                                <option value="SimHei" selected>黑体</option>
+                                <option value="KaiTi" >楷体</option>
+                                <option value="SimSun" >宋体</option>
+                                <option value="FangSong" >仿宋</option>
+                                <option value="苹方" >苹方</option>
   								</select>
                             </div>
                             <div class="dplayer-setting-item-line dplayer-setting-loop">
