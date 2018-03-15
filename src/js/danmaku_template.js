@@ -29,8 +29,8 @@ class Danmaku_Template {
 
 	tpl(options, index, tran, icons) {
 		return `
-   	   		<div style="width: 100%;padding: 0.5rem 0; border-bottom: 1px solid #e8e8e8;">
-   	   		咸鱼牌弹幕播放器 <br>弹幕池
+   	   		<div style="width: 100%;padding: 0.5rem 0; border-bottom: 1px solid #e8e8e8;line-height: 2;">
+   	   		咸鱼牌弹幕池
    	   		</div>
    	   		<div  class="filter" id="tab-filter">
    	   			<div class="active" data-type="0">弹幕</div>

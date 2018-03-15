@@ -15,7 +15,7 @@
         font-weight: 600;
         white-space: nowrap;
         border: rgba(0, 0, 0, 0.8);
-        text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.67);
+        text-shadow: 0 0 3px #000, 0 0 3px #000, 0 0 3px #000, 0 0 3px #000;
         &--demo {
             position: absolute;
             visibility: hidden;

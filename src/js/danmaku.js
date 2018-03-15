@@ -115,10 +115,21 @@ class Danmaku {
 			datatype:"send",
         };
         this.options.apiBackend.send(this.options.api.address + '?m=mukio&c=index&a=post&playerID='+this.options.api.id, danmakuData, callback);
-
-        this.dan.splice(this.danIndex, 0, danmakuData);
+        const danmaku_item = {
+            time: danmakuData.stime,
+            type: dan.type,
+            color: color,
+            author: "smith",
+            message: dan.message,
+            addtime: danmakuData.addtime,
+        }
+        this.dan.splice(this.danIndex, 0, danmaku_item);
         this.danIndex++;
-        if(this.options.api_callback) {this.options.api_callback(this.dan);}
+        if(this.options.api_callback) {
+            this.danmu_list=this.dan;
+			this.draw_danmaku_pool();
+            this.options.api_callback(this.dan);
+        }
         const danmaku = {
             message: this.htmlEncode(dan.message),
             color: "#"+color,
@@ -489,25 +500,25 @@ class Danmaku {
 	}
 	shield_start() {
 		var danmu_lists = [].concat(this.danmu_list);
-		console.log(danmu_lists);
+//		console.log(danmu_lists);
 		for (var i = 0; i < danmu_lists.length; i++) {
 			for (var j = 0; j < this.shield_list.length; j++) {
 				if (this.shield_list[j].type == "文本") {
 					if (danmu_lists[i].message == this.shield_list[j].content) {
-						console.log(danmu_lists[i].message);
+//						console.log(danmu_lists[i].message);
 						danmu_lists.splice(i, 1);
 					}
 				} else if (this.shield_list[j].type == "正则") {
 					var exp = new RegExp(this.shield_list[j].content);
 					if (exp.test(danmu_lists[i].message)) {
-						console.log(danmu_lists[i].message);
+//						console.log(danmu_lists[i].message);
 						danmu_lists.splice(i, 1);
 					}
 				}
 			}
 		}
-		console.log(this.danmu_list);
-		console.log(danmu_lists);
+//		console.log(this.danmu_list);
+//		console.log(danmu_lists);
 		this.dan = danmu_lists;
 	}
 
