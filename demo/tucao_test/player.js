@@ -56,7 +56,6 @@ function analysis_playUrl() {
                 created_html5(getQueryString("file", voide[0][activeLink]), voide, activeLink);
                 break;
         }
-
     }
 }
 function created_html5(playurl,voide,activeLink) {
@@ -100,6 +99,8 @@ function created_paging(){
     b.find('a').click(function () {
         window.location.reload();
     });
+    var activeLink = parseInt(window.location.hash.replace("#", "")) - 1 || 0;
+    b.find('a')[activeLink].classList.add("now")
 }
 
 function __GetCookie(cName) {

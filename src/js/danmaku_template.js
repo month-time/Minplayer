@@ -24,7 +24,7 @@ class Danmaku_Template {
         this.unlimitDanmakuToggle = this.container.querySelector('.danmaki-option .dplayer-danunlimit-setting-input');
         this.speedItemer = this.container.querySelector('.danmaki-option #speedItemer');
         this.fontItemer = this.container.querySelector('.danmaki-option #fontItemer');
-        
+        this.fontIsize = this.container.querySelector('.danmaki-option #fontIsize');
 	}
 
 	tpl(options, index, tran, icons) {
@@ -96,7 +96,7 @@ class Danmaku_Template {
                                 <option value="2" >2</option>
   								</select>
                             </div>
-                            <div class="dplayer-setting-item dplayer-setting-danmaku">
+                            <!--<div class="dplayer-setting-item dplayer-setting-danmaku">
                                 <span class="dplayer-label">弹幕透明度</span>
                                 <div class="dplayer-danmaku-bar-wrap">
                                     <div class="dplayer-danmaku-bar">
@@ -105,7 +105,7 @@ class Danmaku_Template {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div>-->
                             <div class="dplayer-setting-item dplayer-setting-fontIte">
                                 <span class="dplayer-label">弹幕字体</span>
   								<select id="fontItemer">
@@ -115,6 +115,18 @@ class Danmaku_Template {
                                 <option value="SimSun" >宋体</option>
                                 <option value="FangSong" >仿宋</option>
                                 <option value="苹方" >苹方</option>
+  								</select>
+                            </div>
+                            <div class="dplayer-setting-item dplayer-setting-fontIsize">
+                                <span class="dplayer-label">弹幕字号</span>
+  								<select id="fontIsize">
+                                <option value="16px" >16号</option>
+                                <option value="18px" >18号</option>
+                                <option value="20px" >20号</option>
+                                <option value="22px" selected>22号</option>
+                                <option value="24px" >24号</option>
+                                <option value="26px" >26号</option>
+                                <option value="28px" >28号</option>
   								</select>
                             </div>
                             <div class="dplayer-setting-item-line dplayer-setting-loop">
