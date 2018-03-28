@@ -90,10 +90,10 @@ export default {
                 let dan=[apha.time,apha.type,apha.color,"smith",apha.text,apha.addtime];
                 danmaku_pool.push(dan);
 			}
-			console.log(danmaku_pool);
+//			console.log(danmaku_pool);
             callback(null, danmaku_pool);
         }, (xhr, response) => {
-			console.log(response);
+//			console.log(response);
             callback({ status: xhr.status, response });
         }, (xhr) => {
             callback({ status: xhr.status, response: null });

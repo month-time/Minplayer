@@ -25,7 +25,6 @@ let index = 0;
 const instances = [];
 
 class DPlayer {
-
     /**
      * DPlayer constructor function
      *
@@ -69,6 +68,7 @@ class DPlayer {
             icons: this.icons
         });
         this.template.video.onerror = function () {
+            if(this.type=="webtorrent"){return;}
             console.log("Error! 视频解析失败");
             this.template.video_error.style.display="";
         }.bind(this);
@@ -411,8 +411,18 @@ class DPlayer {
                         this.container.classList.add('dplayer-loading');
                         const client = new WebTorrent();
                         const torrentId = video.src;
-                        
+                        client.on('error', function (err) {
+                            console.log("Error! 视频解析失败");
+                            this.template.video_error.style.display="";
+                            console.error(err);
+                        }.bind(this));
                         client.add(torrentId, (torrent) => {
+                            torrent.on('error', function (err) {
+                                console.log("Error! 视频解析失败");
+                                this.template.video_error.style.display="";
+                                console.log(err)
+                            }.bind(this));
+//                            console.log(torrent.files);
                             const file = torrent.files.find((file) => file.name.endsWith('.mp4'));
                             file.renderTo(this.video, {
                                 autoplay: this.options.autoplay

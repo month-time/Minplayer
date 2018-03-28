@@ -2,7 +2,7 @@
 html {
   background: linear-gradient(left, #99a, #eee, #99a);
 }
-.tcplayer {
+.m_dplayer {
   width: 980px;
   height: 556px;
   display: flex;
@@ -206,6 +206,186 @@ html {
 .danmu_pool .danmaki-shield .danmaki-shield-table tbody tr:hover,
 .danmu_pool .danmaki-shield .danmaki-shield-table thead tr:hover {
   background-color: #e5e9ef;
+}
+.danmu_pool .danmaki-option .dplayer-setting-box {
+  transform: scale(0);
+  width: 100%;
+  border-radius: 2px;
+  padding: 7px 0;
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+  z-index: 2;
+}
+.danmu_pool .danmaki-option .dplayer-setting-box > div {
+  display: none;
+}
+.danmu_pool .danmaki-option .dplayer-setting-box > div.dplayer-setting-origin-panel {
+  white-space: initial;
+  text-align: left;
+  display: block;
+}
+.danmu_pool .danmaki-option .dplayer-setting-box.dplayer-setting-box-open {
+  transform: scale(1);
+}
+.danmu_pool .danmaki-option .dplayer-setting-box.dplayer-setting-box-narrow {
+  width: 70px;
+  height: 180px;
+  text-align: center;
+}
+.danmu_pool .danmaki-option .dplayer-setting-box.dplayer-setting-box-speed .dplayer-setting-origin-panel {
+  display: none;
+}
+.danmu_pool .danmaki-option .dplayer-setting-box.dplayer-setting-box-speed .dplayer-setting-speed-panel {
+  display: block;
+}
+.danmu_pool .danmaki-option .dplayer-setting-item {
+  margin: 0 20px;
+  height: 35px;
+  text-align: left;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  cursor: pointer;
+  position: relative;
+}
+.danmu_pool .danmaki-option .dplayer-setting-item-line {
+  margin: 0 20px;
+  height: 35px;
+  text-align: left;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  overflow: initial;
+}
+.danmu_pool .danmaki-option .dplayer-label {
+  width: 72px;
+  vertical-align: top;
+  display: inline-block;
+  text-align: left;
+  color: #99a2aa;
+  height: 26px;
+  line-height: 26px;
+}
+.danmu_pool .danmaki-option .dplayer-toggle {
+  display: inline-block;
+  position: absolute;
+  top: 10px;
+  text-align: right;
+  width: 32px;
+  height: 20px;
+  font-size: 0;
+  vertical-align: middle;
+}
+.danmu_pool .danmaki-option .dplayer-toggle input {
+  max-height: 0;
+  max-width: 0;
+  display: none;
+}
+.danmu_pool .danmaki-option .dplayer-toggle input + label {
+  display: inline-block;
+  position: relative;
+  box-shadow: #dfdfdf 0 0 0 0 inset;
+  border: 1px solid #dfdfdf;
+  height: 20px;
+  width: 32px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+.danmu_pool .danmaki-option .dplayer-toggle input + label:before {
+  content: "";
+  position: absolute;
+  display: block;
+  height: 18px;
+  width: 18px;
+  top: 0;
+  left: 0;
+  border-radius: 15px;
+  transition: 0.2s ease-in-out;
+}
+.danmu_pool .danmaki-option .dplayer-toggle input + label:after {
+  content: "";
+  position: absolute;
+  display: block;
+  left: 0;
+  top: 0;
+  border-radius: 15px;
+  background: #fff;
+  transition: 0.2s ease-in-out;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  height: 18px;
+  width: 18px;
+}
+.danmu_pool .danmaki-option .dplayer-toggle input:checked + label {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+.danmu_pool .danmaki-option .dplayer-toggle input:checked + label:before {
+  width: 30px;
+  background: rgba(255, 255, 255, 0.5);
+}
+.danmu_pool .danmaki-option .dplayer-toggle input:checked + label:after {
+  left: 12px;
+}
+.danmu_pool .danmaki-option .dplayer-danmaku-bar-wrap {
+  padding: 0 10px;
+  box-sizing: border-box;
+  display: block;
+  vertical-align: middle;
+  height: 100%;
+  width: 160px;
+  position: absolute;
+  left: 100px;
+  top: 0;
+  overflow: initial;
+}
+.danmu_pool .danmaki-option .dplayer-danmaku-bar-wrap * {
+  overflow: initial;
+}
+.danmu_pool .danmaki-option .dplayer-danmaku-bar-wrap .dplayer-danmaku-bar {
+  position: relative;
+  top: calc(48.5%);
+  width: 100%;
+  height: 3px;
+  background: #e5e9ef;
+  transition: all 0.3s ease-in-out;
+}
+.danmu_pool .danmaki-option .dplayer-danmaku-bar-wrap .dplayer-danmaku-bar .dplayer-danmaku-bar-inner {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  transition: all 0.1s ease;
+  background: #00a1d6;
+  will-change: width;
+}
+.danmu_pool .danmaki-option .dplayer-danmaku-bar-wrap .dplayer-danmaku-bar .dplayer-danmaku-bar-inner .dplayer-thumb {
+  position: absolute;
+  top: 0;
+  right: 5px;
+  margin-top: -4px;
+  margin-right: -10px;
+  height: 11px;
+  width: 11px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  background: #00a1d6;
+}
+.danmu_pool .danmaki-option select {
+  width: 150px;
+  line-height: 30px;
+  margin-right: 10px;
+  vertical-align: top;
+  padding: 6px 1px;
+  border: 1px solid #ccd0d7;
+  border-radius: 4px;
+  position: absolute;
+  left: 100px;
+}
+.danmu_pool .danmaki-option select option {
+  padding: 5px 0;
 }
 .scroll {
   height: -webkit-fill-available;
