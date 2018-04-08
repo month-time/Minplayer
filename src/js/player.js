@@ -422,7 +422,7 @@ class DPlayer {
                                 this.template.video_error.style.display="";
                                 console.log(err)
                             }.bind(this));
-//                            console.log(torrent.files);
+console.log(torrent.files);
                             const file = torrent.files.find((file) => file.name.endsWith('.mp4'));
                             file.renderTo(this.video, {
                                 autoplay: this.options.autoplay

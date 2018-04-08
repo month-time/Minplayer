@@ -5,17 +5,18 @@
     <title>WebTorrent video player</title>
     <link href="./M_dplayer.min.css" rel="stylesheet">
     <script src="./M_dplayer.min.js"></script>
+    <script src="./M_dplayer.js"></script>
 	<script src="./webtorrent.min.js"></script>
 </head>
 <body>
-<div id="hero">
+<div style="background: #2a3749;">
     <div class="tcplayer">
     	<div id="dplayer"></div>
     </div>
 </div>
 	<script>
 //	var torrentId = 'magnet:?xt=urn:btih:a14369925cb1b05d3001b5f2b1bbae46a0df3042&dn=%E3%80%90%E7%BB%85%E5%A3%AB%E5%8A%A8%E6%BC%AB%E7%BD%91%E3%80%91%5BShimoneta+to+Iu+Gainen+ga+Sonzai+Shinai+Taikutsu+na+Sekai%5D%5B11%5D%5BGB%5D%5BX264%5D%5B720P%5D.mp4&tr=ws%3A%2F%2Ftracker.201724.com%3A8000';
-	var torrentId = 'magnet:?xt=urn:btih:08ada5a7a6183aae1e09d831df6748d566095a10&dn=Sintel&tr=udp%3A%2F%2Fexplodie.org%3A6969&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969&tr=udp%3A%2F%2Ftracker.empire-js.us%3A1337&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337&tr=wss%3A%2F%2Ftracker.btorrent.xyz&tr=wss%3A%2F%2Ftracker.fastcast.nz&tr=wss%3A%2F%2Ftracker.openwebtorrent.com&ws=https%3A%2F%2Fwebtorrent.io%2Ftorrents%2F&xs=https%3A%2F%2Fwebtorrent.io%2Ftorrents%2Fsintel.torrent';
+	var torrentId = 'magnet:?xt=urn:btih:08ada5a7a6183aae1e09d831df6748d566095a10&dn=Sintel&tr=udp://explodie.org:6969&tr=udp://tracker.coppersurfer.tk:6969&tr=udp://tracker.empire-js.us:1337&tr=udp://tracker.leechers-paradise.org:6969&tr=udp://tracker.opentrackr.org:1337&tr=wss://tracker.btorrent.xyz&tr=wss://tracker.fastcast.nz&tr=wss://tracker.openwebtorrent.com&ws=https://webtorrent.io/torrents/&xs=https://webtorrent.io/torrents/sintel.torrent';
 //	var torrentId = './21_1.mp4';
 var dp = new M_dplayer({
     container: document.getElementById('dplayer'),

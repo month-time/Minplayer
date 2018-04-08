@@ -413,7 +413,7 @@ class Danmaku {
 			var dan_text = document.createElement("div");
 			var dan_addtime = document.createElement("div");
 			dan_row.setAttribute("title", this.danmu_list[abc].message);
-			dan_time.innerText = this.chg_time(this.danmu_list[abc].time, "mm:ss");
+			dan_time.innerText = this.chg_time(this.danmu_list[abc].time, "hh:mm:ss");
 			dan_text.innerText = this.danmu_list[abc].message;
 			dan_addtime.innerText = this.chg_time(this.danmu_list[abc].addtime, 'MM-dd hh:mm');
 			dan_row.appendChild(dan_time);
