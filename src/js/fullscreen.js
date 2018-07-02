@@ -25,6 +25,10 @@ class FullScreen {
                 utils.setScrollPosition(this.lastScrollPosition);
                 this.player.events.trigger('fullscreen_cancel');
             } else {
+                if (this.player.container.classList.contains('dplayer-winfulled')==true){
+                    this.player.container.classList.remove('dplayer-winfulled');
+                    console.log("推出全屏");
+                }
                 this.player.template.danmakuSendBox.style.display = "block";
             }
         };
@@ -64,6 +68,7 @@ class FullScreen {
             else if (this.player.video.webkitEnterFullscreen) {   // Safari for iOS
                 this.player.video.webkitEnterFullscreen();
             }
+            this.player.container.classList.add('dplayer-winfulled');
 			this.player.template.danmakuSendBox.style.display="none";
             break;
         case 'web':
@@ -95,7 +100,8 @@ class FullScreen {
             else if (document.webkitCancelFullScreen) {
                 document.webkitCancelFullScreen();
             }
-						this.player.template.danmakuSendBox.style.display="block";
+                
+                this.player.template.danmakuSendBox.style.display="block";
             break;
         case 'web':
             this.player.container.classList.remove('dplayer-fulled');
