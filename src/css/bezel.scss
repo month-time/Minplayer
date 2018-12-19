@@ -44,16 +44,6 @@
         line-height: 14px;
         animation: my-face 5s infinite ease-in-out;
     }
-    .dplayer-error {
-        position: absolute;
-        top: 50%;
-        margin-top: -7px;
-        width: 100%;
-        text-align: center;
-        font-size: 14px;
-        line-height: 14px;
-        animation: my-face 5s infinite ease-in-out;
-    }
     .diplayer-loading-icon {
         display: none;
         position: absolute;
@@ -69,7 +59,6 @@
         .diplayer-loading-dot {
             animation: diplayer-loading-dot-fade .8s ease infinite;
             opacity: 0;
-            fill: #fff;
             transform-origin: 4px 4px;
             @for $i from 7 through 1 {
                 &.diplayer-loading-dot-#{$i} {

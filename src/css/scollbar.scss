@@ -1,36 +1,48 @@
 html{ background: linear-gradient(left, #99a, #eee, #99a); }
 
-.m_dplayer{
-    width: 964px;
-    height: 556px;
-    display: flex;
-    *{box-sizing: border-box;}
-}
-.dplayer {
-	width: 680px;
-	overflow: hidden;
-	position: relative;
-	display: inline-block;
-	height: 100%;
-	pointer-events: auto;
-}
+// .m_dplayer{
+//     width: 964px;
+//     height: 556px;
+//     display: flex;
+//     *{box-sizing: border-box;}
+// }
+// .dplayer {
+// 	width: 680px;
+// 	overflow: hidden;
+// 	position: relative;
+// 	display: inline-block;
+// 	height: 100%;
+// 	pointer-events: auto;
+// }
 
+.dplayer-main {
+    position: relative;
+    overflow: hidden;
+    user-select: none;
+	line-height: 1;
+}
 .danmu_pool {
     border: 1px solid #e8e8e8;
     box-sizing:content-box;
 	position: relative;
     border-left: 1px solid #e2e2e2;
     display: inline-block;
-    width: 284px;
+	width: 284px;
+    height: 100%;
     background-color: #fff;
     box-sizing: border-box;
-    height: 100%;
     vertical-align: top;
     margin: 0;
     text-align: center;
     padding: 0;
     position: relative;
 	overflow: hidden;
+
+position: absolute;
+right: -284px;
+top:0;
+
+
   *{text-overflow:ellipsis;overflow: hidden;white-space: nowrap;font-size: 12px;}
 	.filter{
 		display: flex;justify-content: space-around;border-bottom: 1px solid #e8e8e8;
