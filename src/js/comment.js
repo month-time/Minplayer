@@ -1,3 +1,5 @@
+import utils from './utils';
+
 class Comment {
     constructor (player) {
         this.player = player;
@@ -13,9 +15,9 @@ class Comment {
         });
 
         this.player.template.commentColorSettingBox.addEventListener('click', () => {
-            const sele = this.player.template.commentColorSettingBox.querySelector(`input:checked+span`);
+            const sele = this.player.template.commentColorSettingBox.querySelector('input:checked+span');
             if (sele) {
-                const color = this.player.template.commentColorSettingBox.querySelector(`input:checked`).value;
+                const color = this.player.template.commentColorSettingBox.querySelector('input:checked').value;
                 this.player.template.commentSettingFill.style.fill = color;
                 this.player.template.commentInput.style.color = color;
                 this.player.template.commentSendFill.style.fill = color;
@@ -29,13 +31,11 @@ class Comment {
             const event = e || window.event;
             if (event.keyCode === 13) {
                 this.send();
-                this.player.template.commentInput.value = "";
             }
         });
 
         this.player.template.commentSendButton.addEventListener('click', () => {
             this.send();
-            this.player.template.commentInput.value = "";
         });
     }
 
@@ -82,9 +82,9 @@ class Comment {
         }
 
         this.player.danmaku.send({
-            message: this.player.template.commentInput.value,
-            color: this.player.container.querySelector('.dplayer-comment-setting-color input:checked').value,
-            type: this.player.container.querySelector('.dplayer-comment-setting-type input:checked').value
+            text: this.player.template.commentInput.value,
+            color: utils.color2Number(this.player.container.querySelector('.dplayer-comment-setting-color input:checked').value),
+            type: parseInt(this.player.container.querySelector('.dplayer-comment-setting-type input:checked').value),
         }, () => {
             this.player.template.commentInput.value = '';
             this.hide();

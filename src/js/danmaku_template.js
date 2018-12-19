@@ -5,6 +5,7 @@ class Danmaku_Template {
 		this.index = options.index;
 		this.tran = options.tran;
 		this.icons = options.icons;
+		this.player = options.player;
 		this.init();
 	}
 
@@ -24,7 +25,10 @@ class Danmaku_Template {
         this.unlimitDanmakuToggle = this.container.querySelector('.danmaki-option .dplayer-danunlimit-setting-input');
         this.speedItemer = this.container.querySelector('.danmaki-option #speedItemer');
         this.fontItemer = this.container.querySelector('.danmaki-option #fontItemer');
-        this.fontIsize = this.container.querySelector('.danmaki-option #fontIsize');
+		this.fontIsize = this.container.querySelector('.danmaki-option #fontIsize');
+		this.sort_time = this.container.querySelector("#sort-time");
+		this.sort_crtime = this.container.querySelector("#sort-crtime");
+
 	}
 
 	tpl(options, index, tran, icons) {
@@ -47,7 +51,7 @@ class Danmaku_Template {
     			</ul>
     			<div class='scroll scroll--simple'>
    		    	<ul class="contents">
-    				<li class="contents;">	</li>
+    				<li>	</li>
     			</ul>
     			<div style="height: 3rem;width: 100%;"></div>
   				</div>
@@ -154,7 +158,7 @@ class Danmaku_Template {
                     </div>
   			</div>
    	<div style="position: absolute;bottom: 0;background: #fff;font-size:12px;padding: 10px 0;width: 100%;border-top: 1px solid  #e8e8e8;color: #d8d8d8;">查看历史弹幕</div>
-	<div style="display:none;">${icons.get('comment')}</div>
+	<div style="display:none;">${icons.comment}</div>
 `;
 	}
 	change_tab() {
