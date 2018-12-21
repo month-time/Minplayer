@@ -12,6 +12,9 @@ class danmaku_controller {
         this.danmu_pool.showDanmaku.addEventListener("click", this.control_showdanmaku.bind(this));
         this.danmu_pool.unlimitDanmaku.addEventListener("click", this.control_unlimitdanmaku.bind(this));
 
+        this.shield_list=new Array;
+        this.danmu_pool.danmaki_add_shield.addEventListener("click", this.add_shield.bind(this));
+
         this.danmu_pool.loopToggle.checked = this.player.options.loop;
         if (!this.player.user.get('danmaku')) {this.player.danmaku && this.player.danmaku.hide();}
         this.danmu_pool.showDanmakuToggle.checked = this.player.user.get('danmaku');
@@ -169,26 +172,24 @@ class danmaku_controller {
     }
     shield_start() {
         var danmu_lists = [].concat(this.danmu_list);
-        //		console.log(danmu_lists);
         for (var i = 0; i < danmu_lists.length; i++) {
+            if(danmu_lists[i]){
             for (var j = 0; j < this.shield_list.length; j++) {
+                
                 if (this.shield_list[j].type == "文本") {
-                    if (danmu_lists[i].message == this.shield_list[j].content) {
-                        //						console.log(danmu_lists[i].message);
+                    if (danmu_lists[i].text == this.shield_list[j].content) {
                         danmu_lists.splice(i, 1);
                     }
                 } else if (this.shield_list[j].type == "正则") {
                     var exp = new RegExp(this.shield_list[j].content);
-                    if (exp.test(danmu_lists[i].message)) {
-                        //						console.log(danmu_lists[i].message);
+                    if (danmu_lists[i] && exp.test(danmu_lists[i].text)) {
                         danmu_lists.splice(i, 1);
                     }
                 }
             }
+            }
         }
-        //		console.log(this.danmu_list);
-        //		console.log(danmu_lists);
-        this.dan = danmu_lists;
+        this.options.dan = danmu_lists;
     }
     /*
      * control loop 
@@ -259,11 +260,5 @@ class danmaku_controller {
         this.player.controller.disableAutoHide = true;
     }
 }
-
-
-
-
-
-
 
 export default danmaku_controller;

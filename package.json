@@ -1,5 +1,5 @@
 {
-  "name": "Mdplayer",
+  "name": "mdplayer",
   "version": "1.25.0",
   "description": "Its lovely HTML5 danmaku video player",
   "main": "dist/Mdplayer.min.js",
@@ -27,10 +27,9 @@
   "OriginalAuthor": "DIYgod",
   "license": "MIT",
   "bugs": {
-    
     "url": "https://github.com/month-time/M_dplayer/issues"
   },
-  "homepage": "https://github.com/month-time/M_dplayer/DPlayer#readme",
+  "homepage": "https://github.com/month-time/M_dplayer#readme",
   "devDependencies": {
     "art-template": "4.12.2",
     "art-template-loader": "1.4.3",
