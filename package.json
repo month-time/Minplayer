@@ -1,9 +1,9 @@
 {
-  "name": "M_dplayer",
-  "version": "1.1.1",
-  "description": "such a lovely HTML5 danmaku video player",
-  "main": "dist/M_dplayer.min.js",
-  "style": "dist/M_dplayer.min.css",
+  "name": "mdplayer",
+  "version": "1.25.0",
+  "description": "Its lovely HTML5 danmaku video player",
+  "main": "dist/Mdplayer.min.js",
+  "style": "dist/Mdplayer.min.css",
   "scripts": {
     "start": "npm run dev",
     "build": "cross-env NODE_ENV=production webpack --config webpack/prod.config.js --progress --display-error-details --colors",
@@ -13,6 +13,10 @@
   "files": [
     "dist"
   ],
+  "repository": {
+    "url": "git+https://github.com/month-time/M_dplayer/DPlayer.git",
+    "type": "git"
+  },
   "keywords": [
     "player",
     "danmaku",
@@ -20,33 +24,42 @@
     "html5"
   ],
   "author": "month_time",
+  "OriginalAuthor": "DIYgod",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/month-time/M_dplayer/issues"
+  },
+  "homepage": "https://github.com/month-time/M_dplayer#readme",
   "devDependencies": {
-    "autoprefixer": "^7.2.5",
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "babel-preset-env": "^1.6.1",
-    "cross-env": "^5.1.3",
-    "css-loader": "^0.28.9",
-    "eslint": "^4.17.0",
-    "eslint-loader": "^1.9.0",
-    "exports-loader": "^0.6.4",
-    "extract-text-webpack-plugin": "^3.0.2",
-    "file-loader": "^1.1.6",
-    "git-revision-webpack-plugin": "^2.5.1",
-    "node-sass": "^4.7.2",
-    "postcss-loader": "^2.1.0",
-    "sass-loader": "^6.0.6",
+    "art-template": "4.12.2",
+    "art-template-loader": "1.4.3",
+    "autoprefixer": "^8.6.2",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "cross-env": "^5.2.0",
+    "css-loader": "^0.28.11",
+    "eslint": "^4.19.1",
+    "eslint-loader": "^2.0.0",
+    "exports-loader": "^0.7.0",
+    "file-loader": "^1.1.11",
+    "git-revision-webpack-plugin": "^3.0.3",
+    "mini-css-extract-plugin": "0.4.0",
+    "node-sass": "^4.9.0",
+    "postcss-loader": "^2.1.5",
+    "sass-loader": "^7.0.3",
     "strip-loader": "^0.1.2",
-    "style-loader": "^0.20.1",
+    "style-loader": "^0.21.0",
+    "svg-inline-loader": "0.8.0",
     "template-string-optimize-loader": "^2.2.3",
-    "url-loader": "^0.6.2",
-    "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.11.1"
+    "url-loader": "^1.0.1",
+    "webpack": "^4.12.0",
+    "webpack-cli": "3.0.4",
+    "webpack-dev-server": "^3.1.4"
   },
   "dependencies": {
+    "axios": "0.18.0",
     "balloon-css": "^0.5.0",
-    "object-assign": "4.1.1",
-    "promise-polyfill": "7.0.2"
+    "promise-polyfill": "8.0.0"
   }
 }

@@ -10,13 +10,12 @@ class Setting {
         this.player.template.settingButton.addEventListener('click', () => {
             this.show();
         });
+
         // loop
         this.loop = this.player.options.loop;
         this.player.template.loopToggle.checked = this.loop;
-        this.player.danmaku_template.loopToggle.checked = this.loop;
         this.player.template.loop.addEventListener('click', () => {
             this.player.template.loopToggle.checked = !this.player.template.loopToggle.checked;
-            this.player.danmaku_template.loopToggle.checked = this.player.template.loopToggle.checked;
             if (this.player.template.loopToggle.checked) {
                 this.loop = true;
             }
@@ -25,27 +24,15 @@ class Setting {
             }
             this.hide();
         });
-        this.player.danmaku_template.loop.addEventListener('click', () => {
-            this.player.template.loopToggle.checked = !this.player.template.loopToggle.checked;
-            this.player.danmaku_template.loopToggle.checked = this.player.template.loopToggle.checked;
-            if (this.player.template.loopToggle.checked) {
-                this.loop = true;
-            }
-            else {
-                this.loop = false;
-            }
-            this.hide();
-        });
+
         // show danmaku
         this.showDanmaku = this.player.user.get('danmaku');
         if (!this.showDanmaku) {
             this.player.danmaku && this.player.danmaku.hide();
         }
         this.player.template.showDanmakuToggle.checked = this.showDanmaku;
-        this.player.danmaku_template.showDanmakuToggle.checked = this.showDanmaku;
         this.player.template.showDanmaku.addEventListener('click', () => {
             this.player.template.showDanmakuToggle.checked = !this.player.template.showDanmakuToggle.checked;
-            this.player.danmaku_template.showDanmakuToggle.checked = this.player.template.showDanmakuToggle.checked;
             if (this.player.template.showDanmakuToggle.checked) {
                 this.showDanmaku = true;
                 this.player.danmaku.show();
@@ -57,27 +44,12 @@ class Setting {
             this.player.user.set('danmaku', this.showDanmaku ? 1 : 0);
             this.hide();
         });
-        this.player.danmaku_template.showDanmaku.addEventListener('click', () => {
-            this.player.template.showDanmakuToggle.checked = !this.player.template.showDanmakuToggle.checked;
-            this.player.danmaku_template.showDanmakuToggle.checked = this.player.template.showDanmakuToggle.checked;
-            if (this.player.template.showDanmakuToggle.checked) {
-                this.showDanmaku = true;
-                this.player.danmaku.show();
-            }
-            else {
-                this.showDanmaku = false;
-                this.player.danmaku.hide();
-            }
-            this.player.user.set('danmaku', this.showDanmaku ? 1 : 0);
-            this.hide();
-        });
+
         // unlimit danmaku
         this.unlimitDanmaku = this.player.user.get('unlimited');
         this.player.template.unlimitDanmakuToggle.checked = this.unlimitDanmaku;
-        this.player.danmaku_template.unlimitDanmakuToggle.checked = this.unlimitDanmaku;
         this.player.template.unlimitDanmaku.addEventListener('click', () => {
             this.player.template.unlimitDanmakuToggle.checked = !this.player.template.unlimitDanmakuToggle.checked;
-            this.player.danmaku_template.unlimitDanmakuToggle.checked = this.player.template.unlimitDanmakuToggle.checked;
             if (this.player.template.unlimitDanmakuToggle.checked) {
                 this.unlimitDanmaku = true;
                 this.player.danmaku.unlimit(true);
@@ -89,20 +61,7 @@ class Setting {
             this.player.user.set('unlimited', this.unlimitDanmaku ? 1 : 0);
             this.hide();
         });
-        this.player.danmaku_template.unlimitDanmaku.addEventListener('click', () => {
-            this.player.template.unlimitDanmakuToggle.checked = !this.player.template.unlimitDanmakuToggle.checked;
-            this.player.danmaku_template.unlimitDanmakuToggle.checked = this.player.template.unlimitDanmakuToggle.checked;
-            if (this.player.template.unlimitDanmakuToggle.checked) {
-                this.unlimitDanmaku = true;
-                this.player.danmaku.unlimit(true);
-            }
-            else {
-                this.unlimitDanmaku = false;
-                this.player.danmaku.unlimit(false);
-            }
-            this.player.user.set('unlimited', this.unlimitDanmaku ? 1 : 0);
-            this.hide();
-        });
+
         // speed
         this.player.template.speed.addEventListener('click', () => {
             this.player.template.settingBox.classList.add('dplayer-setting-box-narrow');
@@ -114,15 +73,7 @@ class Setting {
                 this.hide();
             });
         }
-		this.player.danmaku_template.speedItemer.addEventListener('change', () => {
-			this.player.speed(this.player.danmaku_template.speedItemer.value);
-        });
-        this.player.danmaku_template.fontItemer.addEventListener('change', () => {
-			this.player.template.danmaku.style.fontFamily=this.player.danmaku_template.fontItemer.value;
-        });
-        this.player.danmaku_template.fontIsize.addEventListener('change', () => {
-			this.player.template.danmaku.style.fontSize=this.player.danmaku_template.fontIsize.value;
-        });
+
         // danmaku opacity
         if (this.player.danmaku) {
             const dWidth = 130;
@@ -134,7 +85,7 @@ class Setting {
 
             const danmakuMove = (event) => {
                 const e = event || window.event;
-                let percentage = ((e.clientX || e.changedTouches[0].clientX) - utils.getElementViewLeft(this.player.template.danmakuOpacityBarWrap)) / dWidth;
+                let percentage = ((e.clientX || e.changedTouches[0].clientX) - utils.getBoundingClientRectViewLeft(this.player.template.danmakuOpacityBarWrap)) / dWidth;
                 percentage = Math.max(percentage, 0);
                 percentage = Math.min(percentage, 1);
                 this.player.danmaku.opacity(percentage);
@@ -147,7 +98,7 @@ class Setting {
 
             this.player.template.danmakuOpacityBarWrapWrap.addEventListener('click', (event) => {
                 const e = event || window.event;
-                let percentage = ((e.clientX || e.changedTouches[0].clientX) - utils.getElementViewLeft(this.player.template.danmakuOpacityBarWrap)) / dWidth;
+                let percentage = ((e.clientX || e.changedTouches[0].clientX) - utils.getBoundingClientRectViewLeft(this.player.template.danmakuOpacityBarWrap)) / dWidth;
                 percentage = Math.max(percentage, 0);
                 percentage = Math.min(percentage, 1);
                 this.player.danmaku.opacity(percentage);
@@ -174,6 +125,7 @@ class Setting {
     show () {
         this.player.template.settingBox.classList.add('dplayer-setting-box-open');
         this.player.template.mask.classList.add('dplayer-mask-show');
+
         this.player.controller.disableAutoHide = true;
     }
 }

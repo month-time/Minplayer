@@ -1,13 +1,17 @@
 /* eslint-disable no-undef */
 const path = require('path');
 const webpack = require('webpack');
+const GitRevisionPlugin = require('git-revision-webpack-plugin');
+const gitRevisionPlugin = new GitRevisionPlugin();
 
 module.exports = {
+
+    mode: 'development',
 
     devtool: 'cheap-module-source-map',
 
     entry: {
-        'M_dplayer': './src/js/index.js'
+        'Mdplayer': './src/js/index.js'
     },
 
     output: {
@@ -31,14 +35,14 @@ module.exports = {
             {
                 test: /\.js$/,
                 enforce: 'pre',
-                loader: require.resolve('eslint-loader'),
+                loader: 'eslint-loader',
                 include: path.resolve(__dirname, '../src/js'),
             },
             {
                 test: /\.js$/,
                 use: [
                     {
-                        loader: require.resolve('babel-loader'),
+                        loader: 'babel-loader',
                         options: {
                             cacheDirectory: true,
                             presets: ['env']
@@ -49,30 +53,38 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use: [
-                    require.resolve('style-loader'),
+                    'style-loader',
                     {
-                        loader: require.resolve('css-loader'),
+                        loader: 'css-loader',
                         options: {
                             importLoaders: 1
                         }
                     },
                     {
-                        loader: require.resolve('postcss-loader'),
+                        loader: 'postcss-loader',
                         options: {
                             config: {
                                 path: path.join(__dirname, 'postcss.config.js')
                             }
                         }
                     },
-                    require.resolve('sass-loader')
+                    'sass-loader'
                 ]
             },
             {
                 test: /\.(png|jpg)$/,
-                loader: require.resolve('url-loader'),
+                loader: 'url-loader',
                 options: {
                     'limit': 40000
                 }
+            },
+            {
+                test: /\.svg$/,
+                loader: 'svg-inline-loader'
+            },
+            {
+                test: /\.art$/,
+                loader: 'art-template-loader'
             }
         ]
     },
@@ -92,9 +104,9 @@ module.exports = {
     },
 
     plugins: [
-        new webpack.NamedModulesPlugin(),
         new webpack.DefinePlugin({
-            DPLAYER_VERSION: `"${require('../package.json').version}"`,
+            MDPLAYER_VERSION: `"${require('../package.json').version}"`,
+            GIT_HASH: JSON.stringify(gitRevisionPlugin.version())
         })
     ],
 

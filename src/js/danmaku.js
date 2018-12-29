@@ -1,3 +1,6 @@
+import utils from './utils';
+import danmaku_controller from './danmaku_controller';
+
 class Danmaku {
     constructor (options) {
         this.options = options;
@@ -13,15 +16,24 @@ class Danmaku {
         this._opacity = this.options.opacity;
         this.events = this.options.events;
         this.unlimited = this.options.unlimited;
-		this.danmu_list=new Array();
+
+        this.danmaku_controller  = new danmaku_controller(this);
         this._measure('');
+
         this.load();
-		this.shield_list=new Array;
-		this.options.danmu_pool.danmaki_add_shield.addEventListener("click", this.add_shield.bind(this));
+
     }
+
     load () {
         let apiurl;
-        apiurl = `${this.options.api.address}?m=mukio&c=index&a=init&playerID=${this.options.api.id}`;
+        if (this.options.api.maximum) {
+            apiurl = `${this.options.api.address}?id=${this.options.api.id}&max=${this.options.api.maximum}`;
+            // apiurl = `${this.options.api.address}v3/?id=${this.options.api.id}&max=${this.options.api.maximum}`;
+
+        }
+        else {
+            apiurl = `${this.options.api.address}?id=${this.options.api.id}`;
+        }
         const endpoints = (this.options.api.addition || []).slice(0);
         endpoints.push(apiurl);
         this.events && this.events.trigger('danmaku_load_start', endpoints);
@@ -31,20 +43,17 @@ class Danmaku {
             window.requestAnimationFrame(() => {
                 this.frame();
             });
-			if(this.options.api_callback) {
-				this.danmu_list=this.dan;
-				this.draw_danmaku_pool();
-				document.querySelector("#sort-time").addEventListener("click",this.Time_sorting.bind(this));
-				document.querySelector("#sort-crtime").addEventListener("click",this.crTime_sorting.bind(this));
+            if(this.options.api_callback) {
+                this.danmaku_controller.get_dan();
 				this.options.api_callback(this.dan);
 			}
-			
+
             this.options.callback();
-			
+
             this.events && this.events.trigger('danmaku_load_end');
         });
     }
-	
+
     reload (newAPI) {
         this.options.api = newAPI;
         this.dan = [];
@@ -58,81 +67,55 @@ class Danmaku {
     _readAllEndpoints (endpoints, callback) {
         const results = [];
         let readCount = 0;
-        const cbk = (i) => (err, data) => {
-            ++readCount;
-            if (err) {
-                if (err.response) {
-                    this.options.error(err.response.msg);
-                }
-                else {
-                    this.options.error('Request was unsuccessful: ' + err.status);
-                }
-                results[i] = [];
-            }
-            else {
-                const typeMap = ['right', 'right', 'top', 'bottom'];
-                if (data) {
-                    results[i] = data.map((item) => ({
-                        time: item[0],
-                        type: typeMap[item[1]]||typeMap[1],
-                        color: item[2],
-                        author: item[3],
-                        message: item[4],
-						addtime:item[5],
-                    }));
-                }
-                else {
-                    results[i] = [];
-                }
-            }
-            if (readCount === endpoints.length) {
-                return callback(results);
-            }
-        };
 
         for (let i = 0; i < endpoints.length; ++i) {
-            this.options.apiBackend.read(endpoints[i], cbk(i));
+            this.options.apiBackend.read({
+                url: endpoints[i],
+                success: (data) => {
+                    results[i] = data;
+
+                    ++readCount;
+                    if (readCount === endpoints.length) {
+                        callback(results);
+                    }
+                },
+                error: (msg) => {
+                    this.options.error(msg || this.options.tran('Danmaku load failed'));
+                    results[i] = [];
+
+                    ++readCount;
+                    if (readCount === endpoints.length) {
+                        callback(results);
+                    }
+                },
+            });
         }
     }
+
     send (dan, callback) {
-		switch(dan.type){
-			case "right":dan.type=1;break;
-			case "top":dan.type=2;break;
-			case "bottom":dan.type=3;break;
-			default:dan.type=1;break;
-		}
-		var color=dan.color.replace("#","");
         const danmakuData = {
-            message: dan.message,
-            color: parseInt(color,16),
-            stime: this.options.time(),
-            addtime:Date.parse(new Date())/1000,
             token: this.options.api.token,
-            cid: this.options.api.id,
-            mode: dan.type,
-			size: 25,
-            user: this.options.api.user,
-			datatype:"send",
+            id: this.options.api.id,
+            author: this.options.api.user,
+            time: this.options.time(),
+            text: dan.text,
+            color: dan.color,
+            type: dan.type
         };
-        this.options.apiBackend.send(this.options.api.address + '?m=mukio&c=index&a=post&playerID='+this.options.api.id, danmakuData, callback);
-        const danmaku_item = {
-            time: danmakuData.stime,
-            type: dan.type,
-            color: color,
-            author: "smith",
-            message: dan.message,
-            addtime: danmakuData.addtime,
-        }
-        this.dan.splice(this.danIndex, 0, danmaku_item);
+        this.options.apiBackend.send({
+            url: this.options.api.address + 'v3/',
+            data: danmakuData,
+            success: callback,
+            error: (msg) => {
+                this.options.error(msg || this.options.tran('Danmaku send failed'));
+            },
+        });
+
+        this.dan.splice(this.danIndex, 0, danmakuData);
         this.danIndex++;
-        if(this.options.api_callback) {
-            this.danmu_list=this.dan;
-			this.draw_danmaku_pool();
-            this.options.api_callback(this.dan);
-        }
         const danmaku = {
-            message: this.htmlEncode(dan.message),
-            color: "#"+color,
+            text: this.htmlEncode(danmakuData.text),
+            color: danmakuData.color,
             type: danmakuData.type,
             border: `2px solid ${this.options.borderColor}`
         };
@@ -172,8 +155,8 @@ class Danmaku {
     /**
      * Push a danmaku into DPlayer
      *
-     * @param {Object Array} dan - {message, color, type}
-     * message - danmaku content
+     * @param {Object Array} dan - {text, color, type}
+     * text - danmaku content
      * color - danmaku color, default: `#fff`
      * type - danmaku type, `right` `top` `bottom`, default: `right`
      */
@@ -233,28 +216,26 @@ class Danmaku {
             const docFragment = document.createDocumentFragment();
 
             for (let i = 0; i < dan.length; i++) {
-                if (!dan[i].type) {
-                    dan[i].type = 'right';
-                }
+                dan[i].type = utils.number2Type(dan[i].type);
                 if (!dan[i].color) {
-                    dan[i].color = '#fff';
+                    dan[i].color = 16777215;
                 }
-                const item = document.createElement(`div`);
-                item.classList.add(`dplayer-danmaku-item`);
+                const item = document.createElement('div');
+                item.classList.add('dplayer-danmaku-item');
                 item.classList.add(`dplayer-danmaku-${dan[i].type}`);
                 if (dan[i].border) {
-                    item.innerHTML = `<span style="border:${dan[i].border}">${dan[i].message}</span>`;
+                    item.innerHTML = `<span style="border:${dan[i].border}">${dan[i].text}</span>`;
                 }
                 else {
-                    item.innerHTML = dan[i].message;
+                    item.innerHTML = dan[i].text;
                 }
                 item.style.opacity = this._opacity;
-                item.style.color = dan[i].color;
+                item.style.color = utils.number2Color(dan[i].color);
                 item.addEventListener('animationend', () => {
                     this.container.removeChild(item);
                 });
 
-                const itemWidth = this._measure(dan[i].message);
+                const itemWidth = this._measure(dan[i].text);
                 let tunnel;
 
                 // adjust
@@ -285,7 +266,7 @@ class Danmaku {
 
                 if (tunnel >= 0) {
                     // move
-                    item.classList.add(`dplayer-danmaku-move`);
+                    item.classList.add('dplayer-danmaku-move');
 
                     // insert
                     docFragment.appendChild(item);
@@ -306,13 +287,13 @@ class Danmaku {
         this.paused = true;
     }
 
-    _measure (message) {
+    _measure (text) {
         if (!this.context) {
             const measureStyle = getComputedStyle(this.container.getElementsByClassName('dplayer-danmaku-item')[0], null);
             this.context = document.createElement('canvas').getContext('2d');
             this.context.font = measureStyle.getPropertyValue('font');
         }
-        return this.context.measureText(message).width;
+        return this.context.measureText(text).width;
     }
 
     seek () {
@@ -340,12 +321,12 @@ class Danmaku {
 
     htmlEncode (str) {
         return str.
-            replace(/&/g, "&amp;").
-            replace(/</g, "&lt;").
-            replace(/>/g, "&gt;").
-            replace(/"/g, "&quot;").
-            replace(/'/g, "&#x27;").
-            replace(/\//g, "&#x2f;");
+            replace(/&/g, '&amp;').
+            replace(/</g, '&lt;').
+            replace(/>/g, '&gt;').
+            replace(/"/g, '&quot;').
+            replace(/'/g, '&#x27;').
+            replace(/\//g, '&#x2f;');
     }
 
     resize () {
@@ -375,153 +356,6 @@ class Danmaku {
     unlimit (boolean) {
         this.unlimited = boolean;
     }
-/************************************************************************************************
-				
-				
-************************************************************************************************/
-	chg_time(date, mat) {
-		Date.prototype.format = function (format) {
-			var date = {
-				"M+": this.getMonth() + 1,
-				"d+": this.getDate(),
-				"h+": this.getHours(),
-				"m+": this.getMinutes(),
-				"s+": this.getSeconds(),
-				"q+": Math.floor((this.getMonth() + 3) / 3),
-				"S+": this.getMilliseconds()
-			};
-			if (/(y+)/i.test(format)) {
-				format = format.replace(RegExp.$1, (this.getFullYear() + '').substr(4 - RegExp.$1.length));
-			}
-			for (var k in date) {
-				if (new RegExp("(" + k + ")").test(format)) {
-					format = format.replace(RegExp.$1, RegExp.$1.length == 1 ?
-						date[k] : ("00" + date[k]).substr(("" + date[k]).length));
-				}
-			}
-			return format;
-		}
-		var newdate = new Date(date * 1000);
-		return newdate.format(mat);
-	}
-	draw_danmaku_pool() {
-		var danmu_pool = document.querySelector(".danmu_pool ul.contents");
-		danmu_pool.innerHTML = "";
-		for (let abc=0;abc<this.danmu_list.length;abc++) {
-			var dan_row = document.createElement("li");
-			var dan_time = document.createElement("div");
-			var dan_text = document.createElement("div");
-			var dan_addtime = document.createElement("div");
-			dan_row.setAttribute("title", this.danmu_list[abc].message);
-			dan_time.innerText = this.chg_time(this.danmu_list[abc].time, "hh:mm:ss");
-			dan_text.innerText = this.danmu_list[abc].message;
-			dan_addtime.innerText = this.chg_time(this.danmu_list[abc].addtime, 'MM-dd hh:mm');
-			dan_row.appendChild(dan_time);
-			dan_row.appendChild(dan_text);
-			dan_row.appendChild(dan_addtime);
-			danmu_pool.appendChild(dan_row);
-		}
-	}
-
-	Time_sorting() {
-		var type = event.target.getAttribute("data-sort");
-		switch (type) {
-			case "down":
-				this.danmu_list.sort(function (a, b) {
-					return b["time"] - a["time"];
-				});
-				this.draw_danmaku_pool(this.danmu_list);
-				event.target.setAttribute("data-sort", "up");
-				break;
-			case "up":
-				this.danmu_list.sort(function (a, b) {
-					return a["time"] - b["time"];
-				});
-				this.draw_danmaku_pool(this.danmu_list);
-				event.target.setAttribute("data-sort", "down");
-				break;
-			default:
-				this.draw_danmaku_pool(this.danmu_list);
-				break;
-		}
-	}
-
-	crTime_sorting() {
-		var type = event.target.getAttribute("data-sort");
-		switch (type) {
-			case "down":
-				this.danmu_list.sort(function (a, b) {
-					return b["addtime"] - a["addtime"];
-				});
-				this.draw_danmaku_pool(this.danmu_list);
-				event.target.setAttribute("data-sort", "up");
-				break;
-			case "up":
-				this.danmu_list.sort(function (a, b) {
-					return a["addtime"] - b["addtime"];
-				});
-				this.draw_danmaku_pool(this.danmu_list);
-				event.target.setAttribute("data-sort", "down");
-				break;
-			default:
-				this.draw_danmaku_pool(this.danmu_list);
-				break;
-		}
-	}
-	
-	add_shield() {
-		var a = {
-			content: document.querySelector("#shield-text").value,
-			type: document.querySelector("#shield-type").value
-		}
-		this.shield_list.push(a);
-		document.querySelector(".danmaki-shield-table table tbody").innerHTML = "";
-		for (var i = 0; i < this.shield_list.length; i++) {
-			var shield_dom = document.createElement("tr");
-			shield_dom.innerHTML = `<td class="enabled">启用</td>
-		<td class="type">` + this.shield_list[i].type + `</td>
-		<td class="contents">` + this.shield_list[i].content + `</td>
-		<td class="del">删除</td>`;			
-			shield_dom.querySelector(".del").addEventListener("click",this.del_shield_item.bind(this));
-			document.querySelector(".danmaki-shield-table table tbody").appendChild(shield_dom);
-		}
-		this.shield_start();
-	}
-	del_shield_item() {
-		document.querySelector(".danmaki-shield-table table tbody td");
-		event.srcElement.parentElement.parentElement.removeChild(event.srcElement.parentElement);
-		var content = event.srcElement.parentElement.querySelector(".contents").innerText;
-		for (var i = 0; i < this.shield_list.length; i++) {
-			if (this.shield_list[i].content == content) {
-				this.shield_list.splice(i, 1);
-			}
-		}
-		this.shield_start();
-	}
-	shield_start() {
-		var danmu_lists = [].concat(this.danmu_list);
-//		console.log(danmu_lists);
-		for (var i = 0; i < danmu_lists.length; i++) {
-			for (var j = 0; j < this.shield_list.length; j++) {
-				if (this.shield_list[j].type == "文本") {
-					if (danmu_lists[i].message == this.shield_list[j].content) {
-//						console.log(danmu_lists[i].message);
-						danmu_lists.splice(i, 1);
-					}
-				} else if (this.shield_list[j].type == "正则") {
-					var exp = new RegExp(this.shield_list[j].content);
-					if (exp.test(danmu_lists[i].message)) {
-//						console.log(danmu_lists[i].message);
-						danmu_lists.splice(i, 1);
-					}
-				}
-			}
-		}
-//		console.log(this.danmu_list);
-//		console.log(danmu_lists);
-		this.dan = danmu_lists;
-	}
-
 }
 
 export default Danmaku;
