@@ -54,11 +54,15 @@ export default (options) => {
             }
         },
         {
-            text: 'About author',
-            link: 'https://diygod.me'
+            text: `MDPlayer v${MDPLAYER_VERSION}`,
+            link: 'https://github.com/month-time/M_dplayer'
         },
         {
-            text: `DPlayer v${MDPLAYER_VERSION}`,
+            text: 'About author',
+            link: 'https://mxpoi.com'
+        },
+        {
+            text: `Thinks for DPlayer`,
             link: 'https://github.com/MoePlayer/DPlayer'
         }
     ]);

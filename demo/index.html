@@ -6,32 +6,37 @@
     <title>Player Demo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css"> -->
-    <link rel="stylesheet" href="demo.css">
-    <link rel="stylesheet" href="../dist/Mdplayer.min.css">
     <script src="https://cdn.jsdelivr.net/npm/flv.js/dist/flv.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js/dist/hls.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dashjs/dist/dash.all.min.js"></script>
     <script src="https://cdn.jsdelivr.net/webtorrent/latest/webtorrent.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/pearplayer"></script>
     <script src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
+    <link rel="stylesheet" href="../dist/Mdplayer.min.css">
     <script src="../dist/Mdplayer.min.js"></script>
+    <!-- /*    dev drive   */-->
+    <!-- <link rel="stylesheet" href="./Mdplayer.css"> -->
+    <!-- <script src="./Mdplayer.js"></script> -->
 </head>
 <style>
 body {
     background: #858585;
 }
 body #mdplayer{
-    max-width: 800px;
+    width: 800px;
+    height: 600px;
     margin: 50px;
 }
 </style>
 <body class="markdown-body">
     <div id="mdplayer"></div>
     <script>
+        var torrentId = 'magnet:?xt=urn:btih:08ada5a7a6183aae1e09d831df6748d566095a10&dn=Sintel&tr=udp://explodie.org:6969&tr=udp://tracker.coppersurfer.tk:6969&tr=udp://tracker.empire-js.us:1337&tr=udp://tracker.leechers-paradise.org:6969&tr=udp://tracker.opentrackr.org:1337&tr=wss://tracker.btorrent.xyz&tr=wss://tracker.fastcast.nz&tr=wss://tracker.openwebtorrent.com&ws=https://webtorrent.io/torrents/&xs=https://webtorrent.io/torrents/sintel.torrent';
         window.dp1 = new Mdplayer({
             container: document.getElementById('mdplayer'),
             video: {
-                url: './21.mp4',
+                url: torrentId,
+                type: 'webtorrent',
             },
             danmaku: {
                 id: '9E2E3368B56CDBB4',
@@ -82,7 +87,6 @@ body #mdplayer{
         const stats = new Stats();
         stats.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom
         document.body.appendChild(stats.dom);
-
         function animate() {
             stats.begin();
             // monitored code goes here
