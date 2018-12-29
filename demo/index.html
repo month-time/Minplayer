@@ -5,13 +5,14 @@
     <meta charset="UTF-8">
     <title>Player Demo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css"> -->
     <link rel="stylesheet" href="demo.css">
     <script src="https://cdn.jsdelivr.net/npm/flv.js/dist/flv.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js/dist/hls.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dashjs/dist/dash.all.min.js"></script>
     <script src="https://cdn.jsdelivr.net/webtorrent/latest/webtorrent.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/pearplayer"></script>
+    <script src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
     <script src="Mdplayer.js"></script>
 </head>
 
@@ -33,6 +34,35 @@
                 unlimited: true,
                 callback(results) {
                     console.log("弹幕装填成功");
+                },
+            },
+            apiBackend: {
+                read: function (options) {
+                    console.log('Pretend to connect WebSocket');
+                    axios.get(options.url).
+                    then((response) => {
+                        const data = response.data;
+                        if (!data || data.code !== 0) {
+                            options.error && options.error(data && data.msg);
+                            return;
+                        }
+                        options.success && options.success(data.data.map((item) => ({
+                            time: item[0],
+                            type: item[1],
+                            color: item[2],
+                            author: item[3],
+                            text: item[4]
+                        })));
+                    }).
+                    catch((e) => {
+                        console.error(e);
+                        options.error && options.error();
+                    });
+                    // callback();
+                },
+                send: function (options) {
+                    console.log('Pretend to send danamku via WebSocket', options.data);
+                    callback();
                 }
             },
         });
@@ -43,6 +73,7 @@
         const stats = new Stats();
         stats.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom
         document.body.appendChild(stats.dom);
+
         function animate() {
             stats.begin();
             // monitored code goes here
